@@ -1,0 +1,166 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 72px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 42px;
+}
+
+h3 {
+  font-size: 32px;
+  margin: 0;
+}
+
+p {
+  font-size: 21px;
+  margin: 0;
+}
+
+video {
+  pointer-events: none;
+  opacity: 1;
+}
+
+.special_h1 {
+  font-size: 130px;
+}
+
+.header_page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #bebebe;
+}
+
+.header_content {
+  height: 90%;
+  display: flex;
+  align-items: center;
+  margin: 90px 10% 0 10%;
+  position: absolute;
+}
+ 
+.header_text {
+  width: 623px;
+  color: #fff;
+  margin: 15px 0 100px 0;
+}
+
+.sub_header_text {
+  font-size: 21px;
+  color: #fff;
+}
+
+.header_video_container {
+  overflow: hidden;
+}
+
+.nav_style {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  height: 10%;
+  background-color: #1F1F1F;
+}
+
+.icon_style {
+  margin: 0 10px;
+}
+
+.link_style {
+  text-decoration: none;
+}
+
+.main_section {
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  background-color: #1F1F1F;
+  flex-direction: column;
+  align-items: center;
+}
+
+.small_text_group {
+  width: 70vw;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: #fff;
+  margin: 10% 0;
+}
+
+.short_h3{
+  padding-right: 50px;
+  width: 30%;
+}
+
+.short_desc {
+  width: 60%;
+}
+
+.unbound_text {
+  position: relative;
+  color: #fff;
+  bottom: 85px;
+  width: 100%;
+}
+
+.sub_header {
+  font-size: 36px;
+  width: 650px;
+  padding-left: 10%;
+}
+
+.custom_img_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.custom_img {
+  width: 100%;
+}
+
+.custom_img_header_container {
+  position: relative;
+  bottom: -50px;
+}
+
+.img_txt_overlap {
+  width: 70vw;
+}
+
+.custom_img_header_texts {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  color: #fff;
+}
+
+.custom_img_small_txt {
+  position: relative;
+  top: 40px;
+  font-size: 12px;
+}
+
+.img_text_overlap_container {
+  width: 100%;
+}

@@ -26,6 +26,7 @@ h3 {
 p {
   font-size: 21px;
   margin: 0;
+  color: #fff;
 }
 
 video {
@@ -163,4 +164,34 @@ video {
 
 .img_text_overlap_container {
   width: 100%;
+}
+
+.brew_section {
+  padding: 100px 0;
+  height: 630px;
+  background-color: #1F1F1F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section_selection {
+  height: 100%;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 0 25px;
+}
+
+.section_selection_img_container {
+  height: 85%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section_selection_text {
+  margin-top: 15px;
 }

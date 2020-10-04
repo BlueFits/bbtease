@@ -3,12 +3,14 @@ import React from 'react';
 //Components
 import SmallTextGroup from "./components/SmallTextGroup";
 import ImgTextOverlap from "./components/ImgTextOverlap";
+import SectionSelection from "./components/SectionSelection";
 
 //Images
 import customImg from "./assets/images/customImg.jpeg";
+import drinkImg from "./assets/images/drinkA.jpeg";
 
 //Videos
-import videoOne from "./assets/videos/vid_1.mp4";
+// import videoOne from "./assets/videos/vid_1.mp4";
 
 const App = () => {
 
@@ -33,7 +35,7 @@ const App = () => {
 
         <div className="header_video_container">
           <video width="100%" controls autoPlay loop>
-            <source src={videoOne} type="video/mp4"/>
+            {/* <source src={videoOne} type="video/mp4"/> */}
           </video>
         </div>
         
@@ -63,13 +65,32 @@ const App = () => {
         <div className="img_text_overlap_container">
           <ImgTextOverlap
             img={customImg}
-            header="Passion"
-            smallHeader="MADE WITH"
+            header="Brews"
+            smallHeader="These Are The"
             positionXSmallHeader={{ right: 40 }}
             titlePositionX={{ left: "40%" }}
           />
         </div>
 
+      </section>
+
+      <section className="brew_section">
+        <SectionSelection
+          drinkImg={drinkImg}
+        />
+        <SectionSelection
+          drinkImg={drinkImg}
+        />
+        <SectionSelection
+          drinkImg={drinkImg}
+        />
+      </section>
+
+      <section className="main_section">
+        <SmallTextGroup 
+            header={"Today we are pioneering all natural pure milk teas."}
+            description={"Today we are pioneering all natural PURE milk teas, made with fresh milk and cream, and high quality premium loose leaf teas and no artificial flavourings or powders. We've made it our goal to provide our bubble tea in the purest way we possibly can."}
+          />
       </section>
     </div>
   );

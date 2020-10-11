@@ -1,97 +1,276 @@
-import React from 'react';
+import React, { useState } from 'react'
+import { BsArrowLeft, BsArrowRight, BsArrowUpShort } from "react-icons/bs";
+import RellaxWrapper from "react-rellax-wrapper";
+import TextLoop from "react-text-loop";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import { isMobile } from "react-device-detect";
 
 //Components
-import SmallTextGroup from "./components/SmallTextGroup";
-import ImgTextOverlap from "./components/ImgTextOverlap";
-import SectionSelection from "./components/SectionSelection";
+import Divider from "./components/Divider"
+import MainLogo from "./components/MainLogo";
+import VideoTextOverlap from "./components/VideoTextOverlap";
+import BrewsImages from "./components/BrewsImages";
+import Socials from "./components/Socials";
 
 //Images
-import customImg from "./assets/images/customImg.jpeg";
-import drinkImg from "./assets/images/drinkA.jpeg";
+import locationSvg from "./assets/images/locationWMarker.svg";
+import cockTailImg from "./assets/images/stillCocktail.png";
 
-//Videos
-// import videoOne from "./assets/videos/vid_1.mp4";
+//Constants
+import Copy from "./constants/WebCopy";
+import Colors from "./constants/Colors";
+
 
 const App = () => {
 
-  const firstText = `Whether tasting a delicious drink, or eating great food, all the way to interactions of multiple people, 
-  such as having a good ordering experience, or having a conversation with your barista. <br/><br/>
-  The commitment to creating genuinely good human experiences acknowledges 
-  that we’re going to be more than just making drinks, that our emphasis is what we can do that machines can’t, or what fast food will never choose to offer. <br/><br/>
-  The commitment to having our whole environment and service mentality in making sure that the experience from walking in, to walking out, was a genuinely good experience 
-  for not only the customer, but also for the staff, and every other human involved in that community - from our suppliers, to our team, to our customers, we strive to make 
-  sure that every part of that relationship chain is a wholesome experience.`
+  const { 
+    firstShortSection,
+    mixesSection,
+  } = Copy;
+  
+  const [mixesCounter, setMixesCounter] = useState(0);
+  const [mixesValues, setMixesValues] = useState({
+    header: mixesSection.header[mixesCounter],
+    description: mixesSection.description[mixesCounter]
+  });
+  const [faded, setFaded] = useState("unfaded_item");
+  const [readMoreAnim, setReadMoreAnim] = useState("display_set_none")
+  const [readMoreText, setReadMoreText] = useState("Discover our ethos.");
+  const [parallaxPositionY, setParallaxPositionY] = useState({
+    parllax_1_2: isMobile ? -10 : -40,
+    parallax_mixes_desc: 0
+  });
+
+  //Methods
+
+  const readMoreOnClick = () => {
+    const active = "read_more_active";
+    const inactive = "display_set_none";
+    const animSpeed = 200;
+
+    if (readMoreAnim === "display_set_none") {
+      setParallaxPositionY({
+        parllax_1_2: isMobile ? -65 : -90,
+        parallax_mixes_desc: 50
+      });
+      setReadMoreText("Show Less");
+      setReadMoreAnim("display_set_block read_more_inactive");
+      setTimeout(() => {
+        setReadMoreAnim(active);  
+      }, animSpeed);
+    } else {
+      setParallaxPositionY({
+        parllax_1_2: isMobile ? -10 : -40,
+        parallax_mixes_desc: 0
+      });
+      setReadMoreText("Discover our ethos.");
+      setReadMoreAnim("display_set_block read_more_inactive");
+      setTimeout(() => {
+        setReadMoreAnim(inactive);  
+      }, animSpeed);
+    }
+  }
+
+  const imgTransition = (status) => {
+    function animateText(value, animSyncWithCss = 200) {
+      setFaded("unfaded_item faded_item");
+        setTimeout(() => {
+          setFaded("unfaded_item");
+          setMixesValues({
+            header: mixesSection.header[value],
+            description: mixesSection.description[value]
+          });
+        }, animSyncWithCss);
+        setMixesCounter(value);
+    }
+    
+    const maxTexts = mixesSection.header.length - 1;
+
+    if (status === "prev") {
+
+      if (mixesCounter === 0) {
+        animateText(maxTexts);
+      } else {
+        animateText(mixesCounter - 1);
+      }
+    } else {
+      if (mixesCounter === maxTexts) {
+        animateText(0);
+      } else {
+        animateText(mixesCounter + 1);
+      }
+    }
+  };
 
   return (
     <div>
+      <nav id="top" className="nav_style">
+        <MainLogo />
+        <Socials />
+      </nav>
+
       <header className="header_page">
-        <nav className="nav_style">
-          <div><img alt="logo"/></div>
-          <div>
-              <a className="link_style" href="#"><img className="icon_style" alt="social"/></a>
-              <a className="link_style" href="#"><img className="icon_style" alt="social"/></a>
-          </div>
-        </nav>
 
         <div className="header_video_container">
-          <video width="100%" controls autoPlay loop>
-            {/* <source src={videoOne} type="video/mp4"/> */}
+          <div className="black_overlay"></div>
+          <video autoPlay loop muted>
+            <source src="https://dl.dropbox.com/s/o9tw2zp4jms6i8f/BB%20Tease%20Drip%20Timelapse%2030sec.mp4?dl=1" type="video/mp4"/>
           </video>
         </div>
         
         <div className="header_content">
-          <div>
-            <span className="sub_header_text">Established since 2000</span>
-            <h1 className="header_text">Life is too short for bad drinks.</h1>
+          <div className="text_loop_styles">            
+              <TextLoop noWrap={false}>
+                <h1 className="header_interactive_text">We believe it starts with a careful brew.</h1>
+                <h1 className="header_interactive_text">That every cup shared is a love gained.</h1>
+                <h1 className="header_interactive_text">That everyone deserves a little honesty.</h1>
+                <h1 className="header_interactive_text">And life is too short for bad drinks.</h1>
+              </TextLoop>
           </div>
+
+          <a style={{ textDecoration: "none" }} target="_blank" rel="noopener noreferrer" href="https://bubbletease.revelup.com/weborder/?establishment=1">
+            <div className="cta_button">
+              <p className="cta_text">Order Now</p>
+            </div>
+          </a>
         </div>
       </header>
       
       <section className="main_section">
-        
-        <div className="unbound_text">
-          <p className="sub_header">
-            Hand crafted tea beverages are our specialty,<span style={{ color: "#E9B16D"}}> but that’s just the beginning. Drawing on our passions for tea, coffee, mixology, 
-            and craft artisanship, we’re creating products that break the rules. We’re choosing not to be afraid of boundaries and are taking inspiration across disciplines, 
-            as well as taking the best that tradition has to offer.</span>
-          </p>
+    
+        <Divider height={150}/>
+        <div className="mission_section">
+        <RellaxWrapper speed={0.6} percentage={0.8}>
+          <div className="mission_statement_container">
+            <p className="paragraph_sub_header">Our Mission</p>
+            <p style={{ color: "#fff" }} className="unbold_header2">To craft the best damn drinks, carefully brewed, with
+            natural ingredients, and to create genuinely good
+            human experiences.</p>
+              <p 
+                unselectable="on" 
+                onselectstart="return false;" 
+                onmousedown="return false;" 
+                style={{ color: Colors.primary }} 
+                onClick={readMoreOnClick} 
+                className="unselectable mission_read_more_bttn"
+              >
+                {readMoreText}
+              </p>
+          </div>
+          </RellaxWrapper>
+          <Divider height={50}/>
+
+          <RellaxWrapper speed={0.9} percentage={0.8}>
+            <div className={"read_more_texts_container " + readMoreAnim}>
+              <p>
+                Hand crafted tea beverages are our specialty, but that’s just the beginning. Drawing on our passions for tea, coffee, 
+                mixology, and craft artisanship, we’re creating products that break the rules. We’re choosing not to be 
+                afraid of boundaries and are taking inspiration across disciplines, as well as taking the best that tradition has to offer.
+              </p>
+              <br/>
+              <p>
+                Bbtease is an exciting new concept taking tea culture to the next level. 23 years ago we had a single vision - share a piece 
+                of our heritage and culture with Toronto’s diverse communities, and adding a little bit more. Now, Bubble tea is more prominent than 
+                ever, and we believe it’s time to take another step. It’s time to contribute more to Toronto. We’re doing what we’ve always loved 
+                to do: Creating new experiences and sharing culture.
+              </p>
+
+              <h3 className="read_more_h3">{firstShortSection.header}</h3>
+
+              <p dangerouslySetInnerHTML={{ __html: firstShortSection.description }}></p>
+            </div>
+          </RellaxWrapper>
         </div>
 
-        <SmallTextGroup 
-          header={"To us, a human experience is any experience that involves at least one person."}
-          description={firstText}
+        {/* Brews A Section */}
+        <BrewsImages 
+          header="Brews"
+          smallHeader="A LOOK AT OUR"
+          positionXSmallHeader={{ right: -60 }}
+          titlePositionX={{ left: "15%" }}
+          parallaxPercentage={0.85}
+          headerPositionY={parallaxPositionY.parllax_1_2}
         />
 
-        <div className="img_text_overlap_container">
-          <ImgTextOverlap
-            img={customImg}
-            header="Brews"
-            smallHeader="These Are The"
-            positionXSmallHeader={{ right: 40 }}
-            titlePositionX={{ left: "40%" }}
-          />
+        <Divider height={150}/>
+
+        {/* Mixes Section */}
+        <div className="mixes_section">
+          <div className="mixes_elements">
+            <VideoTextOverlap
+              header="Mixes"
+              smallHeader="A LOOK AT OUR"
+              positionXSmallHeader={{ right: -60 }}
+              titlePositionX={{ left: "47%" }}
+              parallaxPercentage={1.1}
+              source="https://dl.dropbox.com/s/yud1v5i3fywp5rz/BB%20Tease%20Cocktail.mp4?dl=1"
+              bgImg={cockTailImg}
+              headerPositionY={parallaxPositionY.parllax_1_2}
+            />
+            <div className="interactive_text_center_container">
+              <div className="interactive_text_center_header">
+                <div>
+                  <div className="arrow_icon" onClick={imgTransition.bind(this, "prev")}>
+                    <BsArrowLeft size={28} color={Colors.primary}/>
+                    </div>
+                </div>
+                <div className={faded}>
+                  <h3 style={{ color: Colors.primary }}>{mixesValues.header}</h3>
+                </div>
+                <div>
+                  <div className="arrow_icon" onClick={imgTransition}>
+                    <BsArrowRight size={28} color={Colors.primary}/>
+                    </div>
+                </div>
+              </div>
+              <RellaxWrapper speed={0.5} percentage={0.4}> 
+                <div style={{ position: "relative", top: parallaxPositionY.parallax_mixes_desc }} className={faded + " mixes_description"}>
+                  <p className="interactive_text_value" dangerouslySetInnerHTML={{ __html: mixesValues.description }}></p>
+                </div>
+              </RellaxWrapper>
+            </div>
+          </div>
+        </div> 
+
+        <Divider />
+
+      </section>
+
+      <Divider height={100}/>
+
+      <section className="location_section">
+        <div className="map_container">
+          <img style={{ width: "100%", position: "relative", left: 10 }} src={locationSvg} alt="map"/>
         </div>
-
+        <div className="map_text">
+              <MainLogo />
+              <p className="map_txt_statement">Everyday from 2pm - 9pm</p>
+              <p>111 Dundas St W, Toronto, Ontario, M5G1C4</p>
+        </div>
       </section>
 
-      <section className="brew_section">
-        <SectionSelection
-          drinkImg={drinkImg}
-        />
-        <SectionSelection
-          drinkImg={drinkImg}
-        />
-        <SectionSelection
-          drinkImg={drinkImg}
-        />
-      </section>
+      <Divider height={100}/>
 
-      <section className="main_section">
-        <SmallTextGroup 
-            header={"Today we are pioneering all natural pure milk teas."}
-            description={"Today we are pioneering all natural PURE milk teas, made with fresh milk and cream, and high quality premium loose leaf teas and no artificial flavourings or powders. We've made it our goal to provide our bubble tea in the purest way we possibly can."}
-          />
-      </section>
+      <footer>
+        <div className="footer_nav">
+            <p style={{ color: Colors.secondary }} className="footer_text footer_email"><strong>INFO@BBTEASE.COM</strong></p>
+            <Socials horizontalMargin={8}/>
+        </div>
+        <div className="footer_line_break_arrow">
+          <AnchorLink href='#top'>
+            <BsArrowUpShort className="arrow_icon footer_arrow" style={{ backgroundColor: Colors.primary }} size={28} color={Colors.background} />
+          </AnchorLink>
+          <div className="line_break"></div>
+        </div>
+        <div className="footer_notes">
+          <div className="footer_elems">
+            <p className="footer_text">ALL RIGHTS RESERVED © 2020 | BUBBLETEASE</p>
+          </div>
+          <div className="footer_elems designer_info_styles">
+            <a style={{ textDecoration: "none" }} href="https://christianr.herokuapp.com/" target="_blank" rel="noopener noreferrer" className="footer_text">DEVELOPMENT AND DESIGN BY CHRISTIAN ROJAS</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

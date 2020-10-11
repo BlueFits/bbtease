@@ -1,10 +1,14 @@
 import React from "react";
+import RellaxWrapper from "react-rellax-wrapper";
 
-const SmallTextGroup = ({ description, header }) => {
+
+const SmallTextGroup = ({ description, header, parallaxPercentage }) => {
     return (
         <div className="small_text_group">
           <h3 className="short_h3">{header}</h3>
-          <p className="short_desc" dangerouslySetInnerHTML={{ __html: description }}></p>
+          <RellaxWrapper className="short_desc" speed={0.6} percentage={0.4}>
+            <p dangerouslySetInnerHTML={{ __html: description }}></p>
+          </RellaxWrapper>
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 
-const ArrowGlow = ({ click, glowStateHover, glowStateUnHover, arrowDirectionGlow, children, direction }) =>{
+const ArrowGlow = ({ click, glowStateHover, glowStateUnHover, arrowDirectionGlow, children, direction, style }) =>{
 
     let classForArrow = "carousel_next";
 
@@ -9,7 +9,7 @@ const ArrowGlow = ({ click, glowStateHover, glowStateUnHover, arrowDirectionGlow
     }
 
     return (
-        <div className={"carousel_directionals " + classForArrow}>
+        <div style={{...style}} className={"carousel_directionals " + classForArrow}>
             <div className="carousel_arrow" onClick={click} onMouseOver={glowStateHover} onMouseOut={glowStateUnHover}>
                 {/* <BsArrowRightShort style={{ zIndex: 2 }} size={32} color="#fff"/> */}
                 {children}

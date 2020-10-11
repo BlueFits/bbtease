@@ -74,8 +74,8 @@ video {
 }
 
 .card_ratio {
-  width: 100%;
-  height: 100%;
+  width: 65vw;
+  height: 75vh;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -296,7 +296,6 @@ video {
 }
 
 .img_txt_overlap {
-  width: 70vw;
   z-index: 2;
 }
 
@@ -332,15 +331,6 @@ video {
   height: 75vh;
 }
 
-.section_selection {
-  height: 630px;
-  width: 320px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  margin: 0 25px;
-}
-
 .section_selection_img_container {
   height: 85%;
   overflow: hidden;
@@ -353,14 +343,14 @@ video {
   margin-top: 15px;
 }
 
-.story_text_container {
+.brews_text_container {
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
   flex-direction: column;
   margin-top: 160px;
-  margin-right: 75px;
+  margin-left: 45px;
 }
 
 .inner_content,
@@ -397,9 +387,20 @@ video {
 
 .mixes_elements {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+
+.mixes_text_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.mixes_header_description_container {
+  height: 400px;
 }
 
 .interactive_text_center_container {
@@ -407,17 +408,15 @@ video {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  margin-top: 30px;
+  top: 60px;
   position: relative;
+  width: 350px;
 }
 
 .interactive_text_center_header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 65vw;
-  margin-bottom: 10px;
   z-index: 3;
 }
 
@@ -533,16 +532,21 @@ footer {
 .mixes_section {
   display: flex;
   position: relative;
-  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  width: 100%;
 }
 
 .mixes_description {
   margin-top: 30px;
-  width: 550px;  
 }
 
+.mixes_arrow_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;  
+  margin-top: 10px;
+}
 .unfaded_item {
   transition: 0.2s ease-in-out;
   opacity: 1;
@@ -666,22 +670,30 @@ footer {
   .special_h1 {
     font-size: 50px;
   }
-  .inner_content_bttn_container,
   .inner_content {
-    width: 85%;
+    width: 80%;
+    height: 380px;
   }
   .video_slideshow_styles {
     height: 30vh;
     width: 100%;
   }
-  /* .video_slideshow_styles {
-    height: 40vh;
-  } */
+  .video_back {
+    object-fit: fill;
+  }
   .story_text_container{
     margin: 20px 0 0 0;
   }
   .custom_img_small_txt {
     top: 15px;
+  }
+  .brews_text_container {
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 100%;
+  }
+  .mobile_brews_description {
+    margin-top: 30px;
   }
   .inner_content_bttn_container {
     margin-top: 10px;
@@ -709,10 +721,14 @@ footer {
   }  
   .mixes_elements {
     width: 100%;
+    flex-direction: column;
+  }
+  .mixes_arrow_container {
+    margin-top: 60px;
   }
   .mobile_video_overlay {
     height: 30vh;
-    width: 100%;
+    width: 90vw;
     position: relative;
     z-index: -1;
   }

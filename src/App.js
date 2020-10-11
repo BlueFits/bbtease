@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BsArrowLeft, BsArrowRight, BsArrowUpShort } from "react-icons/bs";
+import { BsArrowUpShort, BsArrowRightShort, BsArrowLeftShort } from "react-icons/bs";
 import RellaxWrapper from "react-rellax-wrapper";
 import TextLoop from "react-text-loop";
 import AnchorLink from "react-anchor-link-smooth-scroll";
@@ -11,10 +11,11 @@ import MainLogo from "./components/MainLogo";
 import VideoTextOverlap from "./components/VideoTextOverlap";
 import BrewsImages from "./components/BrewsImages";
 import Socials from "./components/Socials";
+import ArrowGlow from "./components/ArrowGlow";
 
 //Images
 import locationSvg from "./assets/images/locationWMarker.svg";
-import cockTailImg from "./assets/images/stillCocktail.png";
+// import cockTailImg from "./assets/images/stillCocktail.png";
 
 //Constants
 import Copy from "./constants/WebCopy";
@@ -40,6 +41,9 @@ const App = () => {
     parllax_1_2: isMobile ? -10 : -40,
     parallax_mixes_desc: 0
   });
+  const [mixesRightArrow, setMixesRightArrow] = useState("");
+  const [mixesLeftArrow, setMixesLeftArrow] = useState("");
+
 
   //Methods
 
@@ -192,7 +196,7 @@ const App = () => {
           headerPositionY={parallaxPositionY.parllax_1_2}
         />
 
-        <Divider height={150}/>
+        <Divider height={ isMobile ? 50 : 150}/>
 
         {/* Mixes Section */}
         <div className="mixes_section">
@@ -201,42 +205,57 @@ const App = () => {
               header="Mixes"
               smallHeader="A LOOK AT OUR"
               positionXSmallHeader={{ right: -60 }}
-              titlePositionX={{ left: "47%" }}
+              titlePositionX={{ left: isMobile ? "-30%" : "47%" }}
               parallaxPercentage={1.1}
               source="https://dl.dropbox.com/s/yud1v5i3fywp5rz/BB%20Tease%20Cocktail.mp4?dl=1"
-              bgImg={cockTailImg}
+              // bgImg={cockTailImg}
               headerPositionY={parallaxPositionY.parllax_1_2}
             />
-            <div className="interactive_text_center_container">
-              <div className="interactive_text_center_header">
-                <div>
-                  <div className="arrow_icon" onClick={imgTransition.bind(this, "prev")}>
-                    <BsArrowLeft size={28} color={Colors.primary}/>
+            <div className="mixes_text_container">
+              <div className="interactive_text_center_container">
+                <div className="mixes_header_description_container">
+                  <div className="interactive_text_center_header">
+                    <div className={faded}>
+                      <h3 style={{ color: "#fff" }}>{mixesValues.header}</h3>
                     </div>
-                </div>
-                <div className={faded}>
-                  <h3 style={{ color: Colors.primary }}>{mixesValues.header}</h3>
-                </div>
-                <div>
-                  <div className="arrow_icon" onClick={imgTransition}>
-                    <BsArrowRight size={28} color={Colors.primary}/>
+                  </div>
+                  <RellaxWrapper speed={0.5} percentage={0.4}> 
+                    <div style={{ position: "relative", top: parallaxPositionY.parallax_mixes_desc }} className={faded + " mixes_description"}>
+                      <p className="interactive_text_value small_text" dangerouslySetInnerHTML={{ __html: mixesValues.description }}></p>
                     </div>
+                  </RellaxWrapper>
+                </div>
+                <div className="mixes_arrow_container">
+                  <ArrowGlow 
+                      glowStateHover={() => setMixesLeftArrow("arrow_glow")}
+                      glowStateUnHover={() => setMixesLeftArrow("")}
+                      arrowDirectionGlow={mixesLeftArrow}
+                      direction="left"
+                      click={imgTransition.bind(this, "prev")}
+                      style={{ position: "relative" }}
+                    >
+                      <BsArrowLeftShort style={{ zIndex: 2 }} size={24} color="#fff"/>
+                    </ArrowGlow>
+                  <div>
+                    <ArrowGlow 
+                      glowStateHover={() => setMixesRightArrow("arrow_glow")}
+                      glowStateUnHover={() => setMixesRightArrow("")}
+                      arrowDirectionGlow={mixesRightArrow}
+                      direction="right"
+                      click={imgTransition}
+                      style={{ position: "relative" }}
+                    >
+                      <BsArrowRightShort style={{ zIndex: 2 }} size={24} color="#fff"/>
+                    </ArrowGlow>
+                  </div>
                 </div>
               </div>
-              <RellaxWrapper speed={0.5} percentage={0.4}> 
-                <div style={{ position: "relative", top: parallaxPositionY.parallax_mixes_desc }} className={faded + " mixes_description"}>
-                  <p className="interactive_text_value" dangerouslySetInnerHTML={{ __html: mixesValues.description }}></p>
-                </div>
-              </RellaxWrapper>
             </div>
           </div>
         </div> 
-
-        <Divider />
-
       </section>
 
-      <Divider height={100}/>
+      <Divider />
 
       <section className="location_section">
         <div className="map_container">
@@ -249,7 +268,7 @@ const App = () => {
         </div>
       </section>
 
-      <Divider height={100}/>
+      <Divider height={80}/>
 
       <footer>
         <div className="footer_nav">

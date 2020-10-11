@@ -121,8 +121,8 @@ export default function App({ titlePositionX,  parallaxPercentage, headerPositio
                 swipeable={false} 
                 showIndicators={ isMobile ? false : true }
               >
-                <div className="video_slideshow_styles" style={{ height: "100%" }}>
-                    <video className="video_back" style={{ backgroundImage: `url(${stillNitro})`,}} autoPlay loop muted>
+                <div className="video_slideshow_styles">
+                    <video className="video_back" style={{ backgroundImage: `url(${stillNitro})` }} autoPlay loop muted>
                       <source src="https://dl.dropbox.com/s/h4blafd1bfq8q10/BB%20Tease%20Nitro%20Cold%20Brew%20Tea.mp4?dl=1" type="video/mp4"/>
                     </video>
                     {/* <p className="legend">Nitro Tea</p> */}
@@ -149,11 +149,11 @@ export default function App({ titlePositionX,  parallaxPercentage, headerPositio
           </div>
       </div>
 
-      <div className="story_text_container">
+      <div className="brews_text_container">
         <div className="inner_content">
             <div className={brewsFaded}>
               <h3>{brewsSection.header[brewsCounter]}</h3>
-              <p className="small_text"dangerouslySetInnerHTML={{ __html: brewsSection.description[brewsCounter] }}></p>     
+              <p className="small_text mobile_brews_description"dangerouslySetInnerHTML={{ __html: brewsSection.description[brewsCounter] }}></p>     
             </div>
         </div>
       </div>

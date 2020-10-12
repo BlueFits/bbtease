@@ -214,7 +214,9 @@ const App = () => {
               // bgImg={cockTailImg}
               headerPositionY={parallaxPositionY.parllax_1_2}
             />
+            
             <div className="mixes_text_container">
+            <RellaxWrapper speed={0.5} percentage={0.6}> 
               <div className="interactive_text_center_container">
                 <div className="mixes_header_description_container">
                   <div className="interactive_text_center_header">
@@ -222,11 +224,9 @@ const App = () => {
                       <h3 style={{ color: "#fff" }}>{mixesValues.header}</h3>
                     </div>
                   </div>
-                  <RellaxWrapper speed={0.5} percentage={0.4}> 
-                    <div style={{ position: "relative", top: parallaxPositionY.parallax_mixes_desc }} className={faded + " mixes_description"}>
-                      <p className="interactive_text_value small_text" dangerouslySetInnerHTML={{ __html: mixesValues.description }}></p>
-                    </div>
-                  </RellaxWrapper>
+                  <div style={{ position: "relative", top: parallaxPositionY.parallax_mixes_desc }} className={faded + " mixes_description"}>
+                    <p className="interactive_text_value small_text" dangerouslySetInnerHTML={{ __html: mixesValues.description }}></p>
+                  </div>
                 </div>
                 <div className="mixes_arrow_container">
                   <ArrowGlow 
@@ -253,6 +253,7 @@ const App = () => {
                   </div>
                 </div>
               </div>
+            </RellaxWrapper>
             </div>
           </div>
         </div> 

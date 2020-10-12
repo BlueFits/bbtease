@@ -428,7 +428,6 @@ video {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: 60px;
   position: relative;
   width: 350px;
 }

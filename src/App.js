@@ -146,7 +146,7 @@ const App = () => {
         <div className="mission_section">
         <RellaxWrapper speed={0.6} percentage={0.8}>
           <div className="mission_statement_container">
-            <p className="paragraph_sub_header">Our Mission</p>
+            <p className="paragraph_sub_header">Our mission:</p>
             <p style={{ color: "#fff" }} className="unbold_header2">To craft the best damn drinks, carefully brewed, with
             natural ingredients, and to create genuinely good
             human experiences.</p>
@@ -162,9 +162,10 @@ const App = () => {
               </p>
           </div>
           </RellaxWrapper>
+
           <Divider height={50}/>
 
-          <RellaxWrapper speed={0.9} percentage={0.8}>
+          {/* <RellaxWrapper speed={0.9} percentage={0.8}> */}
             <div className={"read_more_texts_container " + readMoreAnim}>
               <p>
                 Hand crafted tea beverages are our specialty, but that’s just the beginning. Drawing on our passions for tea, coffee, 
@@ -183,20 +184,22 @@ const App = () => {
 
               <p dangerouslySetInnerHTML={{ __html: firstShortSection.description }}></p>
             </div>
-          </RellaxWrapper>
+          {/* </RellaxWrapper> */}
         </div>
+
+        <Divider height={100}/>
 
         {/* Brews A Section */}
         <BrewsImages 
           header="Brews"
           smallHeader="A LOOK AT OUR"
           positionXSmallHeader={{ right: -60 }}
-          titlePositionX={{ left: "15%" }}
+          titlePositionX={{ left: "30%" }}
           parallaxPercentage={0.85}
           headerPositionY={parallaxPositionY.parllax_1_2}
         />
 
-        <Divider height={ isMobile ? 50 : 150}/>
+        <Divider height={ isMobile ? 50 : 200}/>
 
         {/* Mixes Section */}
         <div className="mixes_section">
@@ -232,7 +235,7 @@ const App = () => {
                       arrowDirectionGlow={mixesLeftArrow}
                       direction="left"
                       click={imgTransition.bind(this, "prev")}
-                      style={{ position: "relative" }}
+                      style={{ position: "relative", left: 0 }}
                     >
                       <BsArrowLeftShort style={{ zIndex: 2 }} size={24} color="#fff"/>
                     </ArrowGlow>
@@ -243,7 +246,7 @@ const App = () => {
                       arrowDirectionGlow={mixesRightArrow}
                       direction="right"
                       click={imgTransition}
-                      style={{ position: "relative" }}
+                      style={{ position: "relative", right: 0 }}
                     >
                       <BsArrowRightShort style={{ zIndex: 2 }} size={24} color="#fff"/>
                     </ArrowGlow>

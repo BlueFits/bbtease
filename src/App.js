@@ -54,7 +54,7 @@ const App = () => {
     if (readMoreAnim === "display_set_none") {
       setParallaxPositionY({
         parllax_1_2: isMobile ? -65 : -90,
-        parallax_mixes_desc: 50
+        parallax_mixes_desc: 30
       });
       setReadMoreText("Show Less");
       setReadMoreAnim("display_set_block read_more_inactive");
@@ -214,7 +214,7 @@ const App = () => {
               headerPositionY={parallaxPositionY.parllax_1_2}
             />
             
-            <div className="mixes_text_container">
+            <div className="mixes_text_container" style={{ top: parallaxPositionY.parallax_mixes_desc }}>
               <RellaxWrapper speed={0.5} percentage={0.6}> 
                 <div className="interactive_text_center_container">
                   <div className="mixes_header_description_container">
@@ -223,7 +223,7 @@ const App = () => {
                         <h3 style={{ color: "#fff" }}>{mixesValues.header}</h3>
                       </div>
                     </div>
-                    <div style={{ position: "relative", top: parallaxPositionY.parallax_mixes_desc }} className={faded + " mixes_description"}>
+                    <div style={{ position: "relative" }} className={faded + " mixes_description"}>
                       <p className="interactive_text_value small_text" dangerouslySetInnerHTML={{ __html: mixesValues.description }}></p>
                     </div>
                   </div>
@@ -281,7 +281,7 @@ const App = () => {
           height={450} 
           frameborder={0} 
           style={{ border: 0 }} 
-          allowfullscreen={false} 
+          allowFullScreen={false} 
           aria-hidden={false} 
           tabindex={0}
         ></iframe>

@@ -422,6 +422,7 @@ video {
   width: 100%;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .mixes_header_description_container {

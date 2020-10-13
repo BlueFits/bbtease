@@ -117,7 +117,7 @@ const App = () => {
 
         <div className="header_video_container">
           <div className="black_overlay"></div>
-          <video autoPlay loop muted>
+          <video className="header_video" autoPlay loop muted>
             <source src="https://dl.dropbox.com/s/o9tw2zp4jms6i8f/BB%20Tease%20Drip%20Timelapse%2030sec.mp4?dl=1" type="video/mp4"/>
           </video>
         </div>
@@ -216,44 +216,44 @@ const App = () => {
             />
             
             <div className="mixes_text_container">
-            <RellaxWrapper speed={0.5} percentage={0.6}> 
-              <div className="interactive_text_center_container">
-                <div className="mixes_header_description_container">
-                  <div className="interactive_text_center_header">
-                    <div className={faded}>
-                      <h3 style={{ color: "#fff" }}>{mixesValues.header}</h3>
+              <RellaxWrapper speed={0.5} percentage={0.6}> 
+                <div className="interactive_text_center_container">
+                  <div className="mixes_header_description_container">
+                    <div className="interactive_text_center_header">
+                      <div className={faded}>
+                        <h3 style={{ color: "#fff" }}>{mixesValues.header}</h3>
+                      </div>
+                    </div>
+                    <div style={{ position: "relative", top: parallaxPositionY.parallax_mixes_desc }} className={faded + " mixes_description"}>
+                      <p className="interactive_text_value small_text" dangerouslySetInnerHTML={{ __html: mixesValues.description }}></p>
                     </div>
                   </div>
-                  <div style={{ position: "relative", top: parallaxPositionY.parallax_mixes_desc }} className={faded + " mixes_description"}>
-                    <p className="interactive_text_value small_text" dangerouslySetInnerHTML={{ __html: mixesValues.description }}></p>
-                  </div>
-                </div>
-                <div className="mixes_arrow_container">
-                  <ArrowGlow 
-                      glowStateHover={() => setMixesLeftArrow("arrow_glow")}
-                      glowStateUnHover={() => setMixesLeftArrow("")}
-                      arrowDirectionGlow={mixesLeftArrow}
-                      direction="left"
-                      click={imgTransition.bind(this, "prev")}
-                      style={{ position: "relative", left: 0 }}
-                    >
-                      <BsArrowLeftShort style={{ zIndex: 2 }} size={24} color="#fff"/>
-                    </ArrowGlow>
-                  <div>
+                  <div className="mixes_arrow_container">
                     <ArrowGlow 
-                      glowStateHover={() => setMixesRightArrow("arrow_glow")}
-                      glowStateUnHover={() => setMixesRightArrow("")}
-                      arrowDirectionGlow={mixesRightArrow}
-                      direction="right"
-                      click={imgTransition}
-                      style={{ position: "relative", right: 0 }}
-                    >
-                      <BsArrowRightShort style={{ zIndex: 2 }} size={24} color="#fff"/>
-                    </ArrowGlow>
+                        glowStateHover={() => setMixesLeftArrow("arrow_glow")}
+                        glowStateUnHover={() => setMixesLeftArrow("")}
+                        arrowDirectionGlow={mixesLeftArrow}
+                        direction="left"
+                        click={imgTransition.bind(this, "prev")}
+                        style={{ position: "relative", left: 0 }}
+                      >
+                        <BsArrowLeftShort style={{ zIndex: 2 }} size={24} color="#fff"/>
+                      </ArrowGlow>
+                    <div>
+                      <ArrowGlow 
+                        glowStateHover={() => setMixesRightArrow("arrow_glow")}
+                        glowStateUnHover={() => setMixesRightArrow("")}
+                        arrowDirectionGlow={mixesRightArrow}
+                        direction="right"
+                        click={imgTransition}
+                        style={{ position: "relative", right: 0 }}
+                      >
+                        <BsArrowRightShort style={{ zIndex: 2 }} size={24} color="#fff"/>
+                      </ArrowGlow>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </RellaxWrapper>
+              </RellaxWrapper>
             </div>
           </div>
         </div> 

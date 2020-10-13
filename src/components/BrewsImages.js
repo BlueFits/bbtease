@@ -111,7 +111,7 @@ export default function App({ titlePositionX,  parallaxPercentage, headerPositio
               </div>
           </RellaxWrapper>
 
-          <div style={{ zIndex: -1, position: "relative" }} className="video_slideshow_styles">
+          <div style={{ zIndex: -1, position: "relative" }} className="carousel_container" >
               <Carousel 
                 renderArrowNext={nextArrow} 
                 renderArrowPrev={prevArrow} 
@@ -120,6 +120,7 @@ export default function App({ titlePositionX,  parallaxPercentage, headerPositio
                 showThumbs={false} 
                 swipeable={false} 
                 showIndicators={ isMobile ? false : true }
+                showStatus={ isMobile ? false: true }
               >
                 <div className="video_slideshow_styles">
                     <video className="video_back" style={{ backgroundImage: `url(${stillNitro})` }} autoPlay loop muted>

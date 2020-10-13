@@ -331,6 +331,11 @@ video {
   height: 75vh;
 }
 
+.carousel_container {
+  width: 65vw;
+  height: 100%;
+}
+
 .section_selection_img_container {
   height: 85%;
   overflow: hidden;
@@ -861,6 +866,7 @@ footer {
   .video_slideshow_styles {
     height: 30vh;
     width: 100%;
+    position: relative;
   }
   .carousel_container {
     width: 80vw;

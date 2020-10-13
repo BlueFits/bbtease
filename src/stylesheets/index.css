@@ -615,6 +615,12 @@ footer {
   opacity: 1;
 }
 
+.google_map_section {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
 /** media queries **/
 
 @media only screen and (max-width: 415px) {

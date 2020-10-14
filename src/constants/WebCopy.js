@@ -84,7 +84,7 @@ export default {
           "Nothin’ but the tea, Milk tea",
           "MF Tea",
           "Not Your Basic Iced Tea",
-          "Bbtease Specialty Smoothies",
+          "bbtease Signature Smoothies",
           "Fresh Tapioca & Toppings"
         ],
         description: [

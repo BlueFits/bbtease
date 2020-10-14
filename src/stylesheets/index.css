@@ -572,9 +572,10 @@ footer {
   background-color: transparent;
   position: absolute;
   z-index: 3;
-  height: 100%;
   display: flex;
   align-items: center;
+  height: 100%;
+  border-radius: 28px;
 }
 
 .carousel_next {
@@ -599,7 +600,6 @@ footer {
   align-items: center;
   position: relative;
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .circle_glow {
@@ -620,6 +620,26 @@ footer {
   display: flex;
   justify-content: center;
   margin: 20px 0;
+}
+
+.inidicator_nodes_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.indicator_nodes {
+  height: 8px;
+  width: 8px;
+  border-radius: 10px;
+  border: 1px solid #E9B16D;
+  margin: 0 8px;
+  transition: 0.2s ease-in-out;
+}
+
+.indicator_nodes_filled {
+  background-color: #E9B16D;
+  transform: scale(1.4);
 }
 
 /** media queries **/

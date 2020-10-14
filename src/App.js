@@ -41,8 +41,13 @@ const App = () => {
     parllax_1_2: isMobile ? -10 : -40,
     parallax_mixes_desc: 0
   });
+  //Mixes Arrow Animations
   const [mixesRightArrow, setMixesRightArrow] = useState("");
   const [mixesLeftArrow, setMixesLeftArrow] = useState("");
+  const [mixesArrowRightColor, setMixesArrowRightColor] = useState(Colors.primary);
+  const [mixesArrowLeftColor, setMixesArrowLeftColor] = useState(Colors.primary);
+  //Indicator Nodes
+  const [nodesState, setNodesState] = useState(["indicator_nodes_filled", "", "", "", ""]);
 
   //Methods
 
@@ -93,14 +98,30 @@ const App = () => {
 
       if (mixesCounter === 0) {
         animateText(maxTexts);
+        let nodeTemp = Array(4).fill("");
+        nodeTemp.push("indicator_nodes_filled")
+        setNodesState(nodeTemp);
       } else {
         animateText(mixesCounter - 1);
+        let index = nodesState.indexOf("indicator_nodes_filled")
+        let nodeTemp = [...nodesState];
+        nodeTemp[index - 1] = nodesState[index];
+        nodeTemp[index] = "";
+        setNodesState(nodeTemp)
       }
     } else {
       if (mixesCounter === maxTexts) {
         animateText(0);
+        let nodeTemp = Array(4).fill("");
+        nodeTemp.unshift("indicator_nodes_filled")
+        setNodesState(nodeTemp);
       } else {
         animateText(mixesCounter + 1);
+        let index = nodesState.indexOf("indicator_nodes_filled")
+        let nodeTemp = [...nodesState];
+        nodeTemp[index + 1] = nodesState[index];
+        nodeTemp[index] = "";
+        setNodesState(nodeTemp)
       }
     }
   };
@@ -228,17 +249,59 @@ const App = () => {
                     </div>
                   </div>
                   <div className="mixes_arrow_container">
-                    <ArrowGlow 
-                        glowStateHover={() => setMixesLeftArrow("arrow_glow")}
-                        glowStateUnHover={() => setMixesLeftArrow("")}
-                        arrowDirectionGlow={mixesLeftArrow}
-                        direction="left"
-                        click={imgTransition.bind(this, "prev")}
-                        style={{ position: "relative", left: 0 }}
-                      >
-                        <BsArrowLeftShort style={{ zIndex: 2 }} size={24} color="#fff"/>
+                    <div 
+                      style={{ borderRadius: "50px", height: 54, width: 54 }}                           
+                      onMouseEnter={() => {
+                        setTimeout(() => {
+                          if (!isMobile) {
+                            setMixesArrowLeftColor(Colors.background)
+                          }
+                        }, 100);
+                      }}
+                      onMouseLeave={() => {
+                        setTimeout(() => {
+                          if (!isMobile) {
+                            setMixesArrowLeftColor(Colors.primary)
+                          }
+                        }, 100);
+                      }}
+                    >
+                      <ArrowGlow 
+                          glowStateHover={() => setMixesLeftArrow("arrow_glow")}
+                          glowStateUnHover={() => setMixesLeftArrow("")}
+                          arrowDirectionGlow={mixesLeftArrow}
+                          direction="left"
+                          click={imgTransition.bind(this, "prev")}
+                          style={{ position: "relative", left: 0 }}
+                          showArrowBackground={false}
+                        >
+                        <BsArrowLeftShort 
+                          style={{ zIndex: 2 }} 
+                          size={24} 
+                          color={mixesArrowLeftColor}
+                        />
                       </ArrowGlow>
-                    <div>
+                    </div>
+                    <div className="inidicator_nodes_container">
+                      <div className={"indicator_nodes " + nodesState[0]}></div>
+                      <div className={"indicator_nodes " + nodesState[1]}></div>
+                      <div className={"indicator_nodes " + nodesState[2]}></div>
+                      <div className={"indicator_nodes " + nodesState[3]}></div>
+                      <div className={"indicator_nodes " + nodesState[4]}></div>
+                    </div>
+                    <div      
+                      style={{ borderRadius: "50px", height: 54, width: 54 }}                           
+                      onMouseEnter={() => setTimeout(() => {
+                        if (!isMobile) {
+                          setMixesArrowRightColor(Colors.background)
+                        }
+                      }, 100)}
+                      onMouseLeave={() => setTimeout(() => {
+                        if (!isMobile) {
+                          setMixesArrowRightColor(Colors.primary)
+                        }
+                      }, 100)}
+                    >
                       <ArrowGlow 
                         glowStateHover={() => setMixesRightArrow("arrow_glow")}
                         glowStateUnHover={() => setMixesRightArrow("")}
@@ -246,8 +309,13 @@ const App = () => {
                         direction="right"
                         click={imgTransition}
                         style={{ position: "relative", right: 0 }}
+                        showArrowBackground={false}
                       >
-                        <BsArrowRightShort style={{ zIndex: 2 }} size={24} color="#fff"/>
+                        <BsArrowRightShort 
+                          style={{ zIndex: 2 }} 
+                          size={24} 
+                          color={mixesArrowRightColor} 
+                        />
                       </ArrowGlow>
                     </div>
                   </div>
@@ -268,6 +336,7 @@ const App = () => {
               <MainLogo />
               <p className="map_txt_statement">Everyday from 2pm - 9pm</p>
               <p>111 Dundas St W, Toronto, Ontario, M5G1C4</p>
+              <p>416-671-3048</p>
         </div>
       </section>
 
@@ -280,7 +349,7 @@ const App = () => {
           width={500}
           height={450} 
           frameborder={0} 
-          style={{ border: 0 }} 
+          style={{ border: 0, borderRadius: 10, overflow: "hidden" }} 
           allowFullScreen={false} 
           aria-hidden={false} 
           tabindex={0}
@@ -289,7 +358,7 @@ const App = () => {
 
       <footer>
         <div className="footer_nav">
-            <p style={{ color: Colors.secondary }} className="footer_text footer_email"><strong>INFO@BBTEASE.COM</strong></p>
+            <a href="mailto:info@bbtease.com" style={{ color: Colors.secondary, textDecoration: "none" }} className="footer_text footer_email"><strong>Contact Us</strong></a>
             <Socials horizontalMargin={8}/>
         </div>
         <div className="footer_line_break_arrow">

@@ -120,7 +120,7 @@ export default function App({ titlePositionX,  parallaxPercentage, headerPositio
                 showThumbs={false} 
                 swipeable={false} 
                 showIndicators={ isMobile ? false : true }
-                showStatus={ isMobile ? false: true }
+                showStatus={ false }
               >
                 <div className="video_slideshow_styles">
                     <video className="video_back" style={{ backgroundImage: `url(${stillNitro})` }} autoPlay loop muted>

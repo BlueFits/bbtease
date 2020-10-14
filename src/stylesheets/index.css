@@ -94,9 +94,6 @@ video {
   justify-content: center;
   align-items: center;
   background-color: black;
-  background-image: url(../assets/images/stillColdDrip.png);
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 .header_content {

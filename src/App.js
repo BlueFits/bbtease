@@ -15,7 +15,8 @@ import ArrowGlow from "./components/ArrowGlow";
 
 //Images
 import locationSvg from "./assets/images/locationWMarker.svg";
-// import cockTailImg from "./assets/images/stillCocktail.png";
+import cockTailImg from "./assets/images/stillCocktail.png";
+import stillColdDrip from "./assets/images/stillColdDrip.png";
 
 //Constants
 import Copy from "./constants/WebCopy";
@@ -137,7 +138,7 @@ const App = () => {
 
         <div className="header_video_container">
           <div className="black_overlay"></div>
-          <video className="header_video" autoPlay loop muted>
+          <video className="header_video" poster={stillColdDrip} autoPlay loop muted>
             <source src="https://dl.dropbox.com/s/o9tw2zp4jms6i8f/BB%20Tease%20Drip%20Timelapse%2030sec.mp4?dl=1" type="video/mp4"/>
           </video>
         </div>
@@ -231,8 +232,8 @@ const App = () => {
               titlePositionX={{ left: isMobile ? "-30%" : "47%" }}
               parallaxPercentage={1.1}
               source="https://dl.dropbox.com/s/yud1v5i3fywp5rz/BB%20Tease%20Cocktail.mp4?dl=1"
-              // bgImg={cockTailImg}
               headerPositionY={parallaxPositionY.parllax_1_2}
+              stillImg={cockTailImg}
             />
             
             <div className="mixes_text_container" style={{ top: parallaxPositionY.parallax_mixes_desc }}>

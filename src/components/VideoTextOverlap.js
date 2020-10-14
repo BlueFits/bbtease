@@ -2,7 +2,7 @@ import React from "react";
 import RellaxWrapper from "react-rellax-wrapper";
 import Colors from "../constants/Colors";
 
-const VideoTextOverlay = ({ header, smallHeader, positionXSmallHeader, titlePositionX, style, parallaxPercentage, source, bgImg, headerPositionY }) => {
+const VideoTextOverlay = ({ header, smallHeader, positionXSmallHeader, titlePositionX, style, parallaxPercentage, source, headerPositionY, stillImg }) => {
     return (
         <div className="img_txt_overlap" style={ style }>
           <RellaxWrapper speed={0.4} percentage={parallaxPercentage}>
@@ -14,8 +14,8 @@ const VideoTextOverlay = ({ header, smallHeader, positionXSmallHeader, titlePosi
             </div>
           </RellaxWrapper>
 
-          <div className="card_ratio mobile_video_overlay" style={{ overflow: "hidden", backgroundImage: `url(${bgImg})` }}>
-            <video width="100%" autoPlay loop muted>
+          <div className="card_ratio mobile_video_overlay" style={{ overflow: "hidden" }}>
+            <video width="100%" poster={stillImg} autoPlay loop muted>
                 <source src={source} type="video/mp4"/>
             </video>
           </div>

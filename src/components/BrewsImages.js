@@ -123,25 +123,25 @@ export default function App({ titlePositionX,  parallaxPercentage, headerPositio
                 showStatus={ false }
               >
                 <div className="video_slideshow_styles">
-                    <video className="video_back" style={{ backgroundImage: `url(${stillNitro})` }} autoPlay loop muted>
+                    <video className="video_back" /*style={{ backgroundImage: `url(${stillNitro})` }}*/ poster={stillNitro} autoPlay loop muted>
                       <source src="https://dl.dropbox.com/s/h4blafd1bfq8q10/BB%20Tease%20Nitro%20Cold%20Brew%20Tea.mp4?dl=1" type="video/mp4"/>
                     </video>
                     {/* <p className="legend">Nitro Tea</p> */}
                 </div>
                 <div className="video_slideshow_styles">
-                    <video className="video_back" style={{ backgroundImage: `url(${stillCoffee})` }} autoPlay loop muted>
+                    <video className="video_back" /*style={{ backgroundImage: `url(${stillCoffee})` }}*/ poster={stillCoffee} autoPlay loop muted>
                       <source src="https://dl.dropbox.com/s/fzgvuxmrac4s608/coffee.mp4?dl=1" type="video/mp4"/>
                     </video>
                     {/* <p className="legend">Pour Over Coffee</p> */}
                 </div>
                 <div className="video_slideshow_styles">
-                    <video className="video_back" style={{ backgroundImage: `url(${stillSiphon})` }} autoPlay loop muted>
+                    <video className="video_back" /*style={{ backgroundImage: `url(${stillSiphon})` }}*/ poster={stillSiphon} autoPlay loop muted>
                       <source src="https://dl.dropbox.com/s/196t8qqf5eo0sc5/Reverse%20Siphon.mp4?dl=1" type="video/mp4"/>
                     </video>
                     {/* <p className="legend">Siphon Pot Coffee and Tea</p> */}
                 </div>
                 <div className="video_slideshow_styles">
-                    <video className="video_back" style={{ backgroundImage: `url(${stillColdDrip})` }}autoPlay loop muted>
+                    <video className="video_back" /*style={{ backgroundImage: `url(${stillColdDrip})` }}*/ poster={stillColdDrip} autoPlay loop muted>
                       <source src="https://dl.dropbox.com/s/o9tw2zp4jms6i8f/BB%20Tease%20Drip%20Timelapse%2030sec.mp4?dl=1" type="video/mp4"/>
                     </video>
                     {/* <p className="legend">Cold Drip Tea</p> */}

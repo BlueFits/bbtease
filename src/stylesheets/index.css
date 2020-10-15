@@ -993,6 +993,40 @@ footer {
   }
 }
 
+/* Landscape */
+@media only screen 
+  and (min-width: 1024px) 
+  and (max-height: 1366px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+    .header_video {
+      height: 100%;
+      width: auto;
+    }
+    .header_video_container {
+      width: 100%;
+    }
+    .card_ratio {
+      height: 500px;
+    }
+    .carousel_container {
+      height: 500px;
+    }
+    .video_slideshow_styles {
+      height: 100%;
+      width: 100%;
+    }
+    .mixes_section {
+      margin-top: 150px;
+    }
+    .custom_img_header_container {
+      /* right: 0; */
+    }
+    .ipadHack {
+      right: 50px;
+    }
+}
+
 /* @media only screen and (min-width: 961px) and (max-width: 1919px) {
     
 }

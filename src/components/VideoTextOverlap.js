@@ -6,7 +6,7 @@ const VideoTextOverlay = ({ header, smallHeader, positionXSmallHeader, titlePosi
     return (
         <div className="img_txt_overlap" style={ style }>
           <RellaxWrapper speed={0.4} percentage={parallaxPercentage}>
-            <div style={{ bottom: headerPositionY }} className="custom_img_header_container">            
+            <div style={{ bottom: headerPositionY }} className="custom_img_header_container ipadHack">            
               <div className="custom_img_header_texts" style={titlePositionX}>
                 {/* <p className="custom_img_small_txt" style={positionXSmallHeader}>{smallHeader}</p> */}
                 <h1 className="special_h1" style={{ color: Colors.primary }}>{header}</h1>

@@ -3,7 +3,6 @@ import RellaxWrapper from "react-rellax-wrapper";
 import { Carousel } from "react-responsive-carousel";
 import "../stylesheets/CustomCarousel.css";
 import { BsArrowRightShort, BsArrowLeftShort } from "react-icons/bs";
-import { isMobile } from "react-device-detect";
 
 //Components
 import ArrowGlow from "./ArrowGlow";
@@ -119,11 +118,11 @@ export default function App({ titlePositionX,  parallaxPercentage, headerPositio
                 infiniteLoop={true} 
                 showThumbs={false} 
                 swipeable={false} 
-                showIndicators={ isMobile ? false : true }
+                showIndicators={ true }
                 showStatus={ false }
               >
                 <div className="video_slideshow_styles">
-                    <video className="video_back" /*style={{ backgroundImage: `url(${stillNitro})` }}*/ poster={stillNitro} autoPlay loop muted>
+                    <video className="video_back" poster={stillNitro} autoPlay loop muted>
                       <source src="https://dl.dropbox.com/s/h4blafd1bfq8q10/BB%20Tease%20Nitro%20Cold%20Brew%20Tea.mp4?dl=1" type="video/mp4"/>
                     </video>
                     {/* <p className="legend">Nitro Tea</p> */}

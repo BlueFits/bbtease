@@ -7,6 +7,18 @@
 /********************************************
 	COLOURS
 ********************************************/
+
+@media only screen 
+  and (min-width: 1024px) 
+  and (max-height: 1366px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+    .carousel .slide {
+      height: 500px;
+    }
+}
+
+
 .carousel .control-arrow, .carousel.carousel-slider .control-arrow {
     -webkit-transition: all 0.25s ease-in;
     -moz-transition: all 0.25s ease-in;
@@ -107,7 +119,7 @@
     .carousel.carousel-slider {
       position: relative;
       margin: 0;
-      overflow: hidden; }
+      overflow: hidden;}
       .carousel.carousel-slider .control-arrow {
         top: 0;
         color: #fff;
@@ -202,7 +214,7 @@
       position: absolute;
       bottom: 0;
       margin: 10px 0;
-      padding: 0 0 28px 0; /* changed padding for dots */
+      padding: 0 0 3% 0; /* changed padding for dots */
       text-align: center;
       width: 100%; }
       @media (min-width: 960px) {
@@ -237,4 +249,5 @@
       color: #fff; }
     .carousel:hover .slide .legend {
       opacity: 1; }
+      
   

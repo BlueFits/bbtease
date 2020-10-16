@@ -293,7 +293,7 @@ video {
 }
 
 .img_txt_overlap {
-  z-index: 2;
+  z-index: 5;
 }
 
 .custom_img_header_texts {
@@ -323,14 +323,13 @@ video {
   top: 450px; */
 }
 
-.video_slideshow_styles {
-  width: 65vw;
-  height: 75vh;
-}
-
 .carousel_container {
-  width: 65vw;
-  height: 100%;
+  width: 64vw;
+  height: 75vh;
+  position: relative;
+  overflow: hidden;
+  /* height: 100%; */
+  z-index: -1;
 }
 
 .section_selection_img_container {
@@ -639,9 +638,51 @@ footer {
   transform: scale(1.4);
 }
 
+.iframe_container {
+  height: 75vh;
+  width: 64vw;
+}
+
+.inidicator_nodes_white_container {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  width: 140px;
+}
+
+.indicator_white_extra_layer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  right: 70px;
+}
+
+.indicator_nodes_white {
+  height: 8px;
+  width: 8px;
+  border: 1px solid #fff;
+  /* border-radius: 10px; */
+  transition: 0.4s ease-in-out;
+  margin: 0 8px;
+  transform: rotate(45deg) scale(1);
+}
+
+.indicator_nodes_filled_white {
+  background-color: #fff;
+  transform: rotate(135deg) scale(1.3);
+}
+
 /** media queries **/
 
 @media only screen and (max-width: 415px) {
+  .iframe_container {
+    width: 100%;
+  }
+  .mixes_hack {
+    height: 230px;
+    width: 100vw;
+  }
   .mixes_text_container {
     margin-top: 20px;
   }
@@ -709,12 +750,9 @@ footer {
     width: 80%;
     height: 480px;
   }
-  .video_slideshow_styles {
-    height: 30vh;
-    width: 100%;
-  }
   .carousel_container {
     width: 100%;
+    height: 200px;
   }
   .video_back {
     object-fit: fill;
@@ -811,7 +849,14 @@ footer {
   }
 }
 
-@media only screen and (min-width: 416px) and (max-width: 1024px) { /** tablet Version **/
+@media only screen and (min-width: 416px) and (max-width: 1023px) { /** tablet Version **/
+  .iframe_container {
+    width: 100%;
+  }
+  .mixes_hack {
+    height: 430px;
+    width: 100vw;
+  }
   .header_video {
     height: 100%;
     width: auto;
@@ -882,18 +927,17 @@ footer {
   }
   .special_h1 {
     font-size: 50px;
+    /* Very Sus Code watch for stylin problems here */
+    position: relative;
+    bottom: 20px;
   }
   .inner_content {
     width: 80%;
     height: 380px;
   }
-  .video_slideshow_styles {
-    height: 30vh;
-    width: 100%;
-    position: relative;
-  }
   .carousel_container {
-    width: 80vw;
+    width: 100%;
+    height: 400px;
   }
   .video_back {
     object-fit: fill;
@@ -993,6 +1037,195 @@ footer {
   }
 }
 
+/* Portrait */
+@media only screen 
+  and (min-width: 1024px) 
+  and (max-height: 1366px) 
+  and (orientation: portrait) 
+  and (-webkit-min-device-pixel-ratio: 1.5) {
+    .iframe_container {
+      width: 100%;
+    }
+    .mixes_hack {
+      height: 580px;
+      width: 100vw;
+    }
+    .header_video {
+      height: 100%;
+      width: auto;
+    }
+    .mixes_text_container {
+      margin-top: 50px;
+    }
+    .mixes_header_description_container {
+      height: 280px;
+    }
+    .text_loop_styles {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    p {
+      font-size: 16px;
+    }
+    h3 {
+      font-size: 24px;
+    }
+    .header_video_container {
+      height: 100%;
+      width: auto;
+    }
+    .header_page {
+      overflow: hidden;
+    }
+    .header_interactive_text {
+      font-size: 32px;
+    }
+    .header_content {
+      width: 100%;    
+    }
+    .main_section {
+      padding: 0 10%;
+    }
+    .text_loop_styles{
+      width: 80vw;
+    }
+    .mission_statement_container {
+      width: 100%;
+    }
+    .unbold_header2 {
+      font-size: 24px;
+    }
+    .read_more_texts_container {
+      width: 100%;
+    }
+    .img_text_overlap_container {
+      flex-direction: column;
+    }
+    .img_txt_overlap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .custom_img_header_container {
+      width: 100%;
+      position: relative;
+      bottom: 0px;
+    }
+    .custom_img_header_texts {
+      width: 100%;
+    }
+    .special_h1 {
+      font-size: 50px;
+    }
+    .inner_content {
+      width: 80%;
+      height: 380px;
+    }
+    .carousel_container {
+      width: 100%;
+      height: 580px;
+    }
+    .video_back {
+      object-fit: fill;
+    }
+    .story_text_container{
+      margin: 20px 0 0 0;
+    }
+    .custom_img_small_txt {
+      top: 15px;
+    }
+    .brews_text_container {
+      margin-top: 0px;
+      margin-left: 0px;
+      width: 100%;
+    }
+    .mobile_brews_description {
+      margin-top: 30px;
+    }
+    .inner_content_bttn_container {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+    }
+    .small_text_group {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+    }
+    .short_desc {
+      width: 100%;
+    }
+    .short_h3{
+      padding-right: 0;
+      margin-bottom: 30px;
+      width: 100%;
+    }
+    .mixes_section {
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+    }  
+    .mixes_elements {
+      width: 100%;
+      flex-direction: column;
+    }
+    .mixes_arrow_container {
+      margin-top: 60px;
+    }
+    .mobile_video_overlay {
+      height: 30vh;
+      width: 100%;
+      position: relative;
+      z-index: -1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .interactive_text_center_container {
+      width: 100%;
+    }
+    .mixes_description {
+      width: 100%;
+    }
+    .map_container {
+      width: 100%;
+      align-items: center;
+      height: 40vh;
+    }
+    .map_text {
+      padding: 0 5%;
+    }
+    .footer_nav {
+      flex-direction: column;
+      top: 10px;
+    }
+    .footer_notes {
+      flex-direction: column;
+      align-items: center;
+      padding: 50px 0;
+    }
+    .footer_elems {
+      text-align: center;
+      width: 100%;
+    }
+    .footer_text {
+      margin: 0;
+      font-size: 14px;
+    }
+    .footer_email {
+      margin-bottom: 15px;
+    }
+    .arrow_glow {
+      background-color: #E9B16D;
+      transform: scale(0);
+      opacity: 0;
+    }
+}
+
 /* Landscape */
 @media only screen 
   and (min-width: 1024px) 
@@ -1011,10 +1244,6 @@ footer {
     }
     .carousel_container {
       height: 500px;
-    }
-    .video_slideshow_styles {
-      height: 100%;
-      width: 100%;
     }
     .mixes_section {
       margin-top: 150px;

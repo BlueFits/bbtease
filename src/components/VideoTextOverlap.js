@@ -13,11 +13,8 @@ const VideoTextOverlay = ({ header, smallHeader, positionXSmallHeader, titlePosi
               </div>
             </div>
           </RellaxWrapper>
-
-          <div className="card_ratio mobile_video_overlay" style={{ overflow: "hidden" }}>
-            <video width="100%" poster={stillImg} autoPlay loop muted>
-                <source src={source} type="video/mp4"/>
-            </video>
+          <div className="iframe_container mixes_hack">
+            <iframe title="video_iframe" src={source} autoPlay={1} width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>          
           </div>
         </div>
     );

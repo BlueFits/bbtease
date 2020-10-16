@@ -1,21 +1,44 @@
 import React, { useState } from 'react'
 import RellaxWrapper from "react-rellax-wrapper";
-import { Carousel } from "react-responsive-carousel";
 import "../stylesheets/CustomCarousel.css";
 import { BsArrowRightShort, BsArrowLeftShort } from "react-icons/bs";
+import { useTransition, animated } from 'react-spring'
 
 //Components
 import ArrowGlow from "./ArrowGlow";
 
 //Images
-import stillNitro from "../assets/images/stillNitro.png";
-import stillColdDrip from "../assets/images/stillColdDrip.png";
-import stillCoffee from "../assets/images/stillCoffee.png";
-import stillSiphon from "../assets/images/stillSiphon.png";
+// import stillNitro from "../assets/images/stillNitro.png";
+// import stillColdDrip from "../assets/images/stillColdDrip.png";
+// import stillCoffee from "../assets/images/stillCoffee.png";
+// import stillSiphon from "../assets/images/stillSiphon.png";
 
 //Constants
 import Colors from "../constants/Colors";
 import Copy from "../constants/WebCopy";
+
+const pages = [
+  ({ style }) => <animated.div style={{ ...style }}>
+    <div className="iframe_container">
+      <iframe title="nitro" src="https://player.vimeo.com/video/468357806?autoplay=1&loop=1&autopause=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+  </animated.div>,
+  ({ style }) => <animated.div style={{ ...style }}>
+    <div className="iframe_container">
+      <iframe title="coffee" src="https://player.vimeo.com/video/468357848?autoplay=1&loop=1&autopause=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>    
+    </div>
+  </animated.div>,
+  ({ style }) => <animated.div style={{ ...style }}>
+    <div className="iframe_container">
+      <iframe title="siphon" src="https://player.vimeo.com/video/468357822?autoplay=1&loop=1&autopause=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+  </animated.div>,
+  ({ style }) => <animated.div style={{ ...style }}>
+    <div className="iframe_container">
+      <iframe title="coldDrip" src="https://player.vimeo.com/video/468358488?autoplay=1&loop=1&autopause=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+  </animated.div>,
+]
 
 export default function App({ titlePositionX,  parallaxPercentage, headerPositionY }) {
 
@@ -23,81 +46,107 @@ export default function App({ titlePositionX,  parallaxPercentage, headerPositio
     brewsSection
   } = Copy;
 
+  const initTrans = {
+    from: "100%",
+    leave: "-50%"
+  };
+
   const [brewsFaded, setBrewsFaded] = useState("unfaded_item");
   const [arrowRightGlow, setArrowRightGlow] = useState(""); 
   const [arrowLeftGlow, setArrowLeftGlow] = useState(""); 
   const [brewsCounter, setBrewsCounter] = useState(0);
+  const [transitionValues, setTransitionValues] = useState(initTrans);
 
+  //Spring Transition
+  const [index, set] = useState(0);
+
+  //Nodes
+  const [nodesState, setNodesState] = useState(["indicator_nodes_filled_white", "", "", ""]);
+
+
+  const transitions = useTransition(index, p => p, {
+    from: { opacity: 0, transform: `translate3d(${transitionValues.from},0,0)` },
+    enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
+    leave: { opacity: 0, transform: `translate3d(${transitionValues.leave},0,0)` },
+  })
 
   const brewsOnClick = (direction) => {
     const maxLength = brewsSection.header.length - 1;
 
     if (direction === "next") {
-      if (brewsCounter !== maxLength) {
-        setBrewsFaded("unfaded_item faded_item");
-        setTimeout(() => {
-          setBrewsFaded("unfaded_item");
-          setBrewsCounter(brewsCounter + 1);
-        }, 200);
-      } else {
-        setBrewsFaded("unfaded_item faded_item");
-        setTimeout(() => {
-          setBrewsFaded("unfaded_item");
-          setBrewsCounter(0);
-        }, 200);
-      }
+      setTransitionValues(initTrans);
+      set((state) => {
+        const nextSlideCalc = (state + 1) % 4;
+        if (state !== maxLength) {
+          //Node Logic
+          let index = nodesState.indexOf("indicator_nodes_filled_white")
+          let nodeTemp = [...nodesState];
+          nodeTemp[index + 1] = nodesState[index];
+          nodeTemp[index] = "";
+          setNodesState(nodeTemp);
+          //
+          setBrewsFaded("unfaded_item faded_item");
+          setTimeout(() => {
+            setBrewsFaded("unfaded_item");
+            setBrewsCounter(nextSlideCalc);
+          }, 200);
+          return nextSlideCalc;
+        } else {
+          //Node Logic
+          let nodeTemp = Array(3).fill("");
+          nodeTemp.unshift("indicator_nodes_filled_white");
+          console.log(nodeTemp);
+          setNodesState(nodeTemp)
+          //
+          setBrewsFaded("unfaded_item faded_item");
+          setTimeout(() => {
+            setBrewsFaded("unfaded_item");
+            setBrewsCounter(0);
+          }, 200);
+          return 0;
+        }
+      });
     } else {
-      if (brewsCounter !== 0) {
-        setBrewsFaded("unfaded_item faded_item");
-        setTimeout(() => {
-          setBrewsFaded("unfaded_item");
-          setBrewsCounter(brewsCounter - 1);
-        }, 200);
-      } else {
-        setBrewsFaded("unfaded_item faded_item");
-        setTimeout(() => {
-          setBrewsFaded("unfaded_item");
-          setBrewsCounter(maxLength);
-        }, 200);
-      }
+      setTransitionValues({
+        from: "-100%",
+        leave: "50%",
+      });
+      set((state) => {
+        const prevSlideCalc = (state - 1) % 4;
+        if (state !== 0) {
+          //Node Logic
+          let index = nodesState.indexOf("indicator_nodes_filled_white")
+          let nodeTemp = [...nodesState];
+          nodeTemp[index - 1] = nodesState[index];
+          nodeTemp[index] = "";
+          setNodesState(nodeTemp);
+          //
+          setBrewsFaded("unfaded_item faded_item");
+          setTimeout(() => {
+            setBrewsFaded("unfaded_item");
+            setBrewsCounter(prevSlideCalc);
+          }, 200);
+          return prevSlideCalc
+        } else {
+          //Node Logic
+          let nodeTemp = Array(3).fill("");
+          nodeTemp.push("indicator_nodes_filled_white");
+          console.log(nodeTemp);
+          setNodesState(nodeTemp)
+          //
+          setBrewsFaded("unfaded_item faded_item");
+          setTimeout(() => {
+            setBrewsFaded("unfaded_item");
+            setBrewsCounter(maxLength);
+          }, 200);
+          return maxLength;
+        }
+      });
     }
   }
   
 
-  //Methods
-  const nextArrow = (carouselNext) => {
-    return (
-      <ArrowGlow 
-        click={() => {
-          carouselNext();
-          brewsOnClick("next");
-        }} 
-        glowStateHover={() => setArrowRightGlow("arrow_glow")} 
-        glowStateUnHover={() => setArrowRightGlow("")} 
-        arrowDirectionGlow={arrowRightGlow} 
-        direction="right"
-      >
-        <BsArrowRightShort style={{ zIndex: 2 }} size={32} color="#fff"/>
-      </ArrowGlow>
-    );
-  }
-
-  const prevArrow = (carouselPrev) => {
-      return (
-        <ArrowGlow 
-          click={() => {
-            carouselPrev();
-            brewsOnClick("prev");
-          }} 
-          glowStateHover={() => setArrowLeftGlow("arrow_glow")} 
-          glowStateUnHover={() => setArrowLeftGlow("")} 
-          arrowDirectionGlow={arrowLeftGlow} 
-          direction="left"
-        >
-          <BsArrowLeftShort style={{ zIndex: 2 }} size={32} color="#fff"/>
-        </ArrowGlow>
-      );
-  }
+  // Methods
 
   return (
     <div className="img_text_overlap_container">
@@ -110,42 +159,43 @@ export default function App({ titlePositionX,  parallaxPercentage, headerPositio
               </div>
           </RellaxWrapper>
 
-          <div style={{ zIndex: -1, position: "relative" }} className="carousel_container" >
-              <Carousel 
-                renderArrowNext={nextArrow} 
-                renderArrowPrev={prevArrow} 
-                dynamicHeight={true} 
-                infiniteLoop={true} 
-                showThumbs={false} 
-                swipeable={false} 
-                showIndicators={ true }
-                showStatus={ false }
-              >
-                <div className="video_slideshow_styles">
-                    <video className="video_back" poster={stillNitro} autoPlay loop muted>
-                      <source src="https://dl.dropbox.com/s/h4blafd1bfq8q10/BB%20Tease%20Nitro%20Cold%20Brew%20Tea.mp4?dl=1" type="video/mp4"/>
-                    </video>
-                    {/* <p className="legend">Nitro Tea</p> */}
-                </div>
-                <div className="video_slideshow_styles">
-                    <video className="video_back" /*style={{ backgroundImage: `url(${stillCoffee})` }}*/ poster={stillCoffee} autoPlay loop muted>
-                      <source src="https://dl.dropbox.com/s/fzgvuxmrac4s608/coffee.mp4?dl=1" type="video/mp4"/>
-                    </video>
-                    {/* <p className="legend">Pour Over Coffee</p> */}
-                </div>
-                <div className="video_slideshow_styles">
-                    <video className="video_back" /*style={{ backgroundImage: `url(${stillSiphon})` }}*/ poster={stillSiphon} autoPlay loop muted>
-                      <source src="https://dl.dropbox.com/s/196t8qqf5eo0sc5/Reverse%20Siphon.mp4?dl=1" type="video/mp4"/>
-                    </video>
-                    {/* <p className="legend">Siphon Pot Coffee and Tea</p> */}
-                </div>
-                <div className="video_slideshow_styles">
-                    <video className="video_back" /*style={{ backgroundImage: `url(${stillColdDrip})` }}*/ poster={stillColdDrip} autoPlay loop muted>
-                      <source src="https://dl.dropbox.com/s/o9tw2zp4jms6i8f/BB%20Tease%20Drip%20Timelapse%2030sec.mp4?dl=1" type="video/mp4"/>
-                    </video>
-                    {/* <p className="legend">Cold Drip Tea</p> */}
-                </div>
-              </Carousel>
+          <div className="carousel_container">
+            <ArrowGlow 
+              click={() => {
+                brewsOnClick("next");
+              }} 
+              glowStateHover={() => setArrowRightGlow("arrow_glow")} 
+              glowStateUnHover={() => setArrowRightGlow("")} 
+              arrowDirectionGlow={arrowRightGlow} 
+              direction="right"
+            >
+              <BsArrowRightShort style={{ zIndex: 2 }} size={32} color="#fff"/>
+            </ArrowGlow>
+            <ArrowGlow 
+              click={() => {
+                brewsOnClick("prev");
+              }} 
+              glowStateHover={() => setArrowLeftGlow("arrow_glow")} 
+              glowStateUnHover={() => setArrowLeftGlow("")} 
+              arrowDirectionGlow={arrowLeftGlow} 
+              direction="left"
+            >
+              <BsArrowLeftShort style={{ zIndex: 2 }} size={32} color="#fff"/>
+            </ArrowGlow>
+            <div className="inidicator_nodes_white_container">
+              <div className="indicator_white_extra_layer">
+                <div className={"indicator_nodes_white " + nodesState[0]}></div>
+                <div className={"indicator_nodes_white " + nodesState[1]}></div>
+                <div className={"indicator_nodes_white " + nodesState[2]}></div>
+                <div className={"indicator_nodes_white " + nodesState[3]}></div>
+              </div>
+            </div>
+            <div className="simple-trans-main">
+              {transitions.map(({ item, props, key }) => {
+                const Page = pages[item]
+                return <Page key={key} style={props} />
+              })}
+            </div>
           </div>
       </div>
 

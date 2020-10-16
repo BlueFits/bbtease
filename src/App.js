@@ -231,7 +231,7 @@ const App = () => {
               positionXSmallHeader={{ right: -60 }}
               titlePositionX={{ left: isMobile ? "-30%" : "47%" }}
               parallaxPercentage={1.1}
-              source="https://dl.dropbox.com/s/yud1v5i3fywp5rz/BB%20Tease%20Cocktail.mp4?dl=1"
+              source="https://player.vimeo.com/video/468357881?autoplay=1&loop=1&autopause=0$mute=1"
               headerPositionY={parallaxPositionY.parllax_1_2}
               stillImg={cockTailImg}
             />

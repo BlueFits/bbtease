@@ -329,7 +329,6 @@ video {
   position: relative;
   overflow: hidden;
   /* height: 100%; */
-  z-index: -1;
 }
 
 .section_selection_img_container {
@@ -627,15 +626,16 @@ footer {
 .indicator_nodes {
   height: 8px;
   width: 8px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   border: 1px solid #E9B16D;
   margin: 0 8px;
   transition: 0.2s ease-in-out;
+  transform: rotate(45deg) scale(1);
 }
 
 .indicator_nodes_filled {
   background-color: #E9B16D;
-  transform: scale(1.4);
+  transform: rotate(135deg) scale(1.3);
 }
 
 .iframe_container {
@@ -749,6 +749,10 @@ footer {
   .inner_content {
     width: 80%;
     height: 480px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
   }
   .carousel_container {
     width: 100%;
@@ -764,7 +768,7 @@ footer {
     top: 15px;
   }
   .brews_text_container {
-    margin-top: 0px;
+    margin-top: 20px;
     margin-left: 0px;
     width: 100%;
   }

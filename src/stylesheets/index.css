@@ -329,6 +329,8 @@ video {
   position: relative;
   overflow: hidden;
   /* height: 100%; */
+  z-index: -1;
+  /* Allos for playing */
 }
 
 .section_selection_img_container {

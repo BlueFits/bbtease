@@ -759,6 +759,8 @@ footer {
   .carousel_container {
     width: 100%;
     height: 200px;
+    z-index: auto;
+    /* Buggy z-index */
   }
   .video_back {
     object-fit: fill;

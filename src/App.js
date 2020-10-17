@@ -337,7 +337,7 @@ const App = () => {
               <MainLogo />
               <p className="map_txt_statement">Everyday from 2pm - 9pm</p>
               <p>111 Dundas St W, Toronto, Ontario, M5G1C4</p>
-              <p>416-671-3048</p>
+              <p>437-917-9349</p>
         </div>
       </section>
 

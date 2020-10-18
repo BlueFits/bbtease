@@ -346,7 +346,7 @@ const App = () => {
       <section className="google_map_section">
         <iframe 
           title="Bbtease_location"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.6516959881137!2d-79.38643148450218!3d43.65541447912117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34cbbe7bf343%3A0xad71ea14e32d155e!2s111%20Dundas%20St%20W%2C%20Toronto%2C%20ON%20M5G%201C4!5e0!3m2!1sen!2sca!4v1602606735923!5m2!1sen!2sca" 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.6516959881137!2d-79.38643148450218!3d43.65541447912117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b35cb9a22a2c5%3A0x387b1fc990d03323!2sbbtease!5e0!3m2!1sen!2sca!4v1603036312633!5m2!1sen!2sca" 
           width={500}
           height={450} 
           frameborder={0} 

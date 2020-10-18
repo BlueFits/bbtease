@@ -4,6 +4,7 @@ import RellaxWrapper from "react-rellax-wrapper";
 import TextLoop from "react-text-loop";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { isMobile } from "react-device-detect";
+import ScrollAnimation from "react-animate-on-scroll";
 
 //Components
 import Divider from "./components/Divider"
@@ -55,7 +56,7 @@ const App = () => {
   const readMoreOnClick = () => {
     const active = "read_more_active";
     const inactive = "display_set_none";
-    const animSpeed = 200;
+    const animSpeed = 300;
 
     if (readMoreAnim === "display_set_none") {
       setParallaxPositionY({
@@ -200,10 +201,12 @@ const App = () => {
                 ever, and we believe it’s time to take another step. It’s time to contribute more to Toronto. We’re doing what we’ve always loved 
                 to do: Creating new experiences and sharing culture.
               </p>
-
+              <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
               <h3 className="read_more_h3">{firstShortSection.header}</h3>
-
+              </ScrollAnimation>
+              <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
               <p dangerouslySetInnerHTML={{ __html: firstShortSection.description }}></p>
+              </ScrollAnimation>
             </div>
           {/* </RellaxWrapper> */}
         </div>
@@ -242,11 +245,15 @@ const App = () => {
                   <div className="mixes_header_description_container">
                     <div className="interactive_text_center_header">
                       <div className={faded}>
-                        <h3 style={{ color: "#fff" }}>{mixesValues.header}</h3>
+                        <ScrollAnimation animateIn="fadeIn" delay={400} animateOnce={true}>
+                          <h3 style={{ color: "#fff" }}>{mixesValues.header}</h3>
+                        </ScrollAnimation>
                       </div>
                     </div>
                     <div style={{ position: "relative" }} className={faded + " mixes_description"}>
-                      <p className="interactive_text_value small_text" dangerouslySetInnerHTML={{ __html: mixesValues.description }}></p>
+                      <ScrollAnimation animateIn="fadeIn" delay={700} animateOnce={true}>
+                        <p className="interactive_text_value small_text" dangerouslySetInnerHTML={{ __html: mixesValues.description }}></p>
+                      </ScrollAnimation>
                     </div>
                   </div>
                   <div className="mixes_arrow_container">

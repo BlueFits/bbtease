@@ -3,6 +3,7 @@ import RellaxWrapper from "react-rellax-wrapper";
 import "../stylesheets/CustomCarousel.css";
 import { BsArrowRightShort, BsArrowLeftShort } from "react-icons/bs";
 import { useTransition, animated } from 'react-spring'
+import ScrollAnimation from "react-animate-on-scroll";
 
 //Components
 import ArrowGlow from "./ArrowGlow";
@@ -154,11 +155,12 @@ export default function App({ titlePositionX,  parallaxPercentage, headerPositio
           <RellaxWrapper speed={0.4} percentage={parallaxPercentage}>
               <div style={{ bottom: headerPositionY }} className="custom_img_header_container">            
                   <div className="custom_img_header_texts" style={titlePositionX}>
+                  <ScrollAnimation animateIn="fadeIn" delay={100} animateOnce={true}>
                     <h1 className="special_h1" style={{ color: Colors.primary }}>Brews</h1>
+                  </ScrollAnimation>
                   </div>
               </div>
           </RellaxWrapper>
-
           <div className="carousel_container">
             <ArrowGlow 
               click={() => {
@@ -202,8 +204,12 @@ export default function App({ titlePositionX,  parallaxPercentage, headerPositio
       <div className="brews_text_container">
         <div className="inner_content">
             <div className={brewsFaded}>
+            <ScrollAnimation animateIn="fadeIn" delay={400} animateOnce={true}>
               <h3>{brewsSection.header[brewsCounter]}</h3>
-              <p className="small_text mobile_brews_description"dangerouslySetInnerHTML={{ __html: brewsSection.description[brewsCounter] }}></p>     
+            </ScrollAnimation>
+            <ScrollAnimation animateIn="fadeIn" delay={700} animateOnce={true}>
+              <p className="small_text mobile_brews_description"dangerouslySetInnerHTML={{ __html: brewsSection.description[brewsCounter] }}></p>   
+            </ScrollAnimation>
             </div>
         </div>
       </div>

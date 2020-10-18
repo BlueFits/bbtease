@@ -1,6 +1,7 @@
 import React from "react";
 import RellaxWrapper from "react-rellax-wrapper";
 import Colors from "../constants/Colors";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const VideoTextOverlay = ({ header, smallHeader, positionXSmallHeader, titlePositionX, style, parallaxPercentage, source, headerPositionY, stillImg }) => {
     return (
@@ -9,7 +10,9 @@ const VideoTextOverlay = ({ header, smallHeader, positionXSmallHeader, titlePosi
             <div style={{ bottom: headerPositionY }} className="custom_img_header_container ipadHack">            
               <div className="custom_img_header_texts" style={titlePositionX}>
                 {/* <p className="custom_img_small_txt" style={positionXSmallHeader}>{smallHeader}</p> */}
+                <ScrollAnimation animateIn="fadeIn" delay={100} animateOnce={true}>
                 <h1 className="special_h1" style={{ color: Colors.primary }}>{header}</h1>
+                </ScrollAnimation>
               </div>
             </div>
           </RellaxWrapper>

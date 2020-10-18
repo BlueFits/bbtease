@@ -252,7 +252,7 @@ video {
 
 .read_more_texts_container {
   width: 550px;
-  transition: 0.1s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 
 .read_more_inactive {

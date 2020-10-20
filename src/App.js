@@ -245,13 +245,13 @@ const App = () => {
                   <div className="mixes_header_description_container">
                     <div className="interactive_text_center_header">
                       <div className={faded}>
-                        <ScrollAnimation animateIn="fadeIn" delay={400} animateOnce={true}>
+                        <ScrollAnimation animateIn="fadeIn" delay={300} animateOnce={true}>
                           <h3 style={{ color: "#fff" }}>{mixesValues.header}</h3>
                         </ScrollAnimation>
                       </div>
                     </div>
                     <div style={{ position: "relative" }} className={faded + " mixes_description"}>
-                      <ScrollAnimation animateIn="fadeIn" delay={700} animateOnce={true}>
+                      <ScrollAnimation animateIn="fadeIn" delay={600} animateOnce={true}>
                         <p className="interactive_text_value small_text" dangerouslySetInnerHTML={{ __html: mixesValues.description }}></p>
                       </ScrollAnimation>
                     </div>

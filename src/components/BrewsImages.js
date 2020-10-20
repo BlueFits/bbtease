@@ -155,7 +155,7 @@ export default function App({ titlePositionX,  parallaxPercentage, headerPositio
           <RellaxWrapper speed={0.4} percentage={parallaxPercentage}>
               <div style={{ bottom: headerPositionY }} className="custom_img_header_container">            
                   <div className="custom_img_header_texts" style={titlePositionX}>
-                  <ScrollAnimation animateIn="fadeIn" delay={100} animateOnce={true}>
+                  <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
                     <h1 className="special_h1" style={{ color: Colors.primary }}>Brews</h1>
                   </ScrollAnimation>
                   </div>
@@ -204,10 +204,10 @@ export default function App({ titlePositionX,  parallaxPercentage, headerPositio
       <div className="brews_text_container">
         <div className="inner_content">
             <div className={brewsFaded}>
-            <ScrollAnimation animateIn="fadeIn" delay={400} animateOnce={true}>
+            <ScrollAnimation animateIn="fadeIn" delay={300} animateOnce={true}>
               <h3>{brewsSection.header[brewsCounter]}</h3>
             </ScrollAnimation>
-            <ScrollAnimation animateIn="fadeIn" delay={700} animateOnce={true}>
+            <ScrollAnimation animateIn="fadeIn" delay={600} animateOnce={true}>
               <p className="small_text mobile_brews_description"dangerouslySetInnerHTML={{ __html: brewsSection.description[brewsCounter] }}></p>   
             </ScrollAnimation>
             </div>

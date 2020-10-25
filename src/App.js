@@ -31,27 +31,34 @@ const App = () => {
     mixesSection,
   } = Copy;
   
+  //For Mixes carousel
   const [mixesCounter, setMixesCounter] = useState(0);
   const [mixesValues, setMixesValues] = useState({
     header: mixesSection.header[mixesCounter],
     description: mixesSection.description[mixesCounter]
   });
-  const [faded, setFaded] = useState("unfaded_item");
+  //Fade Css Mixes
+  const [faded, setFaded] = useState("unfaded_item faded_item");
+  const [lateFaded, setLateFaded] = useState("unfaded_item faded_item");
+
+  //Mixes Arrow Animations
+  const [mixesRightArrow, setMixesRightArrow] = useState("");
+  const [mixesLeftArrow, setMixesLeftArrow] = useState("");
+  const [mixesArrowRightColor, setMixesArrowRightColor] = useState(Colors.primary);
+  const [mixesArrowLeftColor, setMixesArrowLeftColor] = useState(Colors.primary);
+
+  //Mission Statement Anim Config
   const [readMoreAnim, setReadMoreAnim] = useState("display_set_none")
   const [readMoreText, setReadMoreText] = useState("Discover our ethos.");
   const [parallaxPositionY, setParallaxPositionY] = useState({
     parllax_1_2: isMobile ? -10 : -40,
     parallax_mixes_desc: 0
   });
-  //Mixes Arrow Animations
-  const [mixesRightArrow, setMixesRightArrow] = useState("");
-  const [mixesLeftArrow, setMixesLeftArrow] = useState("");
-  const [mixesArrowRightColor, setMixesArrowRightColor] = useState(Colors.primary);
-  const [mixesArrowLeftColor, setMixesArrowLeftColor] = useState(Colors.primary);
+
   //Indicator Nodes
   const [nodesState, setNodesState] = useState(["indicator_nodes_filled", "", "", "", ""]);
 
-  //Methods
+ /* Methods */
 
   const readMoreOnClick = () => {
     const active = "read_more_active";
@@ -81,11 +88,38 @@ const App = () => {
     }
   }
 
+  //Mixes Text Fades
+  const showRegularFade = (isFaded) => {
+    if (!isFaded) {
+      setFaded("unfaded_item faded_item");
+      setLateFaded("unfaded_item faded_item");
+    } else {
+      setFaded("unfaded_item");
+      setLateFaded("unfaded_item");
+    }
+  };
+
+  const showLateFade = (isFaded) => {
+    if (!isFaded) {
+      setFaded("unfaded_item faded_item");
+      setTimeout(() => {
+        setLateFaded("unfaded_item faded_item");
+      }, 500);
+    } else {
+      setFaded("unfaded_item");
+      setTimeout(() => {
+        setLateFaded("unfaded_item");
+      }, 500);
+    }
+  };
+
   const imgTransition = (status) => {
     function animateText(value, animSyncWithCss = 200) {
-      setFaded("unfaded_item faded_item");
+      //Hide Text
+      showRegularFade(false);
         setTimeout(() => {
-          setFaded("unfaded_item");
+          //Show after 200
+          showRegularFade(true);
           setMixesValues({
             header: mixesSection.header[value],
             description: mixesSection.description[value]
@@ -169,9 +203,11 @@ const App = () => {
         <RellaxWrapper speed={0.6} percentage={0.8}>
           <div className="mission_statement_container">
             <p className="paragraph_sub_header">Our mission:</p>
-            <p style={{ color: "#fff" }} className="unbold_header2">To craft the best damn drinks, carefully brewed, with
-            natural ingredients, and to create genuinely good
-            human experiences.</p>
+            <p style={{ color: "#fff" }} className="unbold_header2">
+              To craft the best damn drinks, carefully brewed, with
+              natural ingredients, and to create genuinely good
+              human experiences.
+            </p>
             <p 
               unselectable="on" 
               onselectstart="return false;" 
@@ -186,7 +222,6 @@ const App = () => {
 
           <Divider height={50}/>
 
-          {/* <RellaxWrapper speed={0.9} percentage={0.8}> */}
             <div className={"read_more_texts_container " + readMoreAnim}>
               <p>
                 Hand crafted tea beverages are our specialty, but that’s just the beginning. Drawing on our passions for tea, coffee, 
@@ -207,32 +242,19 @@ const App = () => {
                 <p dangerouslySetInnerHTML={{ __html: firstShortSection.description }}></p>
               </ScrollAnimation>
             </div>
-          {/* </RellaxWrapper> */}
         </div>
 
         <Divider height={100}/>
 
         {/* Brews A Section */}
-        <div style={{ paddingLeft: isMobile ? "0" : "25%" }} className="custom_img_header_container ipadpro_brews_header">            
-            <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
-              <h1 className="special_h1" style={{ color: Colors.primary }}>Brews</h1>
-            </ScrollAnimation>
-        </div>
-        <BrewsImages 
-          header="Brews"
-          smallHeader="A LOOK AT OUR"
-          positionXSmallHeader={{ right: -60 }}
-          titlePositionX={{ left: "30%" }}
-          parallaxPercentage={0.85}
-          headerPositionY={parallaxPositionY.parllax_1_2}
-        />
+        <BrewsImages />
 
         <Divider height={ isMobile ? 10 : 200}/>
 
         {/* Mixes Section */}
         <div className="mixes_section">
           <div style={{ paddingRight: isMobile ? "0" : "25%", justifyContent: isMobile ? "center" : "flex-end"  }} className="custom_img_header_container ipadpro_positioning">            
-            <ScrollAnimation animateIn="fadeIn" afterAnimatedIn={() => console.log()} animateOnce={true}>
+            <ScrollAnimation animateIn="fadeIn" afterAnimatedIn={showLateFade.bind(this, true)} animateOnce={true}>
               <h1 className="special_h1" style={{ color: Colors.primary }}>Mixes</h1>
             </ScrollAnimation>
           </div>
@@ -254,15 +276,11 @@ const App = () => {
                   <div className="mixes_header_description_container">
                     <div className="interactive_text_center_header">
                       <div className={faded}>
-                        <ScrollAnimation animateIn="fadeIn" delay={300} animateOnce={true}>
-                          <h3 style={{ color: "#fff" }}>{mixesValues.header}</h3>
-                        </ScrollAnimation>
+                        <h3 style={{ color: "#fff" }}>{mixesValues.header}</h3>
                       </div>
                     </div>
-                    <div style={{ position: "relative" }} className={faded + " mixes_description"}>
-                      <ScrollAnimation animateIn="fadeIn" delay={600} animateOnce={true}>
-                        <p className="interactive_text_value small_text" dangerouslySetInnerHTML={{ __html: mixesValues.description }}></p>
-                      </ScrollAnimation>
+                    <div style={{ position: "relative" }} className={lateFaded + " mixes_description"}>
+                      <p className="interactive_text_value small_text" dangerouslySetInnerHTML={{ __html: mixesValues.description }}></p>
                     </div>
                   </div>
                   <div className="mixes_arrow_container">

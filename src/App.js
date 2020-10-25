@@ -172,16 +172,15 @@ const App = () => {
             <p style={{ color: "#fff" }} className="unbold_header2">To craft the best damn drinks, carefully brewed, with
             natural ingredients, and to create genuinely good
             human experiences.</p>
-              <p 
-                unselectable="on" 
-                onselectstart="return false;" 
-                onmousedown="return false;" 
-                style={{ color: Colors.primary }} 
-                onClick={readMoreOnClick} 
-                className="unselectable mission_read_more_bttn"
-              >
-                {readMoreText}
-              </p>
+            <p 
+              unselectable="on" 
+              onselectstart="return false;" 
+              onmousedown="return false;" 
+              onClick={readMoreOnClick} 
+              className="unselectable mission_read_more_bttn"
+            >
+              {readMoreText}
+            </p>
           </div>
           </RellaxWrapper>
 
@@ -202,10 +201,10 @@ const App = () => {
                 to do: Creating new experiences and sharing culture.
               </p>
               <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
-              <h3 className="read_more_h3">{firstShortSection.header}</h3>
+                <h3 className="read_more_h3">{firstShortSection.header}</h3>
               </ScrollAnimation>
               <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
-              <p dangerouslySetInnerHTML={{ __html: firstShortSection.description }}></p>
+                <p dangerouslySetInnerHTML={{ __html: firstShortSection.description }}></p>
               </ScrollAnimation>
             </div>
           {/* </RellaxWrapper> */}
@@ -214,6 +213,11 @@ const App = () => {
         <Divider height={100}/>
 
         {/* Brews A Section */}
+        <div style={{ paddingLeft: isMobile ? "0" : "25%" }} className="custom_img_header_container ipadpro_brews_header">            
+            <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
+              <h1 className="special_h1" style={{ color: Colors.primary }}>Brews</h1>
+            </ScrollAnimation>
+        </div>
         <BrewsImages 
           header="Brews"
           smallHeader="A LOOK AT OUR"
@@ -223,10 +227,15 @@ const App = () => {
           headerPositionY={parallaxPositionY.parllax_1_2}
         />
 
-        <Divider height={ isMobile ? 50 : 200}/>
+        <Divider height={ isMobile ? 10 : 200}/>
 
         {/* Mixes Section */}
         <div className="mixes_section">
+          <div style={{ paddingRight: isMobile ? "0" : "25%", justifyContent: isMobile ? "center" : "flex-end"  }} className="custom_img_header_container ipadpro_positioning">            
+            <ScrollAnimation animateIn="fadeIn" afterAnimatedIn={() => console.log()} animateOnce={true}>
+              <h1 className="special_h1" style={{ color: Colors.primary }}>Mixes</h1>
+            </ScrollAnimation>
+          </div>
           <div className="mixes_elements">
             <VideoTextOverlap
               header="Mixes"

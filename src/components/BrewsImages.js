@@ -1,47 +1,32 @@
 import React, { useState } from 'react'
-import RellaxWrapper from "react-rellax-wrapper";
 import "../stylesheets/CustomCarousel.css";
 import { BsArrowRightShort, BsArrowLeftShort } from "react-icons/bs";
 import { useTransition, animated } from 'react-spring'
 import ScrollAnimation from "react-animate-on-scroll";
+import "../stylesheets/ResponsiveCarouselLayout.css";
 
 //Components
 import ArrowGlow from "./ArrowGlow";
 
-//Images
-// import stillNitro from "../assets/images/stillNitro.png";
-// import stillColdDrip from "../assets/images/stillColdDrip.png";
-// import stillCoffee from "../assets/images/stillCoffee.png";
-// import stillSiphon from "../assets/images/stillSiphon.png";
-
 //Constants
-import Colors from "../constants/Colors";
 import Copy from "../constants/WebCopy";
 
 const pages = [
-  ({ style }) => <animated.div style={{ ...style }}>
-    <div className="iframe_container">
+  ({ style }) => <animated.div className="responsive_carousel_animated_divs" style={{ ...style }}>
       <iframe title="nitro" src="https://player.vimeo.com/video/468357806?autoplay=1&loop=1&autopause=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-    </div>
   </animated.div>,
-  ({ style }) => <animated.div style={{ ...style }}>
-    <div className="iframe_container">
+  ({ style }) => <animated.div className="responsive_carousel_animated_divs" style={{ ...style }}>
       <iframe title="coffee" src="https://player.vimeo.com/video/468357848?autoplay=1&loop=1&autopause=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>    
-    </div>
   </animated.div>,
-  ({ style }) => <animated.div style={{ ...style }}>
-    <div className="iframe_container">
+  ({ style }) => <animated.div className="responsive_carousel_animated_divs" style={{ ...style }}>
       <iframe title="siphon" src="https://player.vimeo.com/video/468357822?autoplay=1&loop=1&autopause=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-    </div>
   </animated.div>,
-  ({ style }) => <animated.div style={{ ...style }}>
-    <div className="iframe_container">
+  ({ style }) => <animated.div className="responsive_carousel_animated_divs" style={{ ...style }}>
       <iframe title="coldDrip" src="https://player.vimeo.com/video/468358488?autoplay=1&loop=1&autopause=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-    </div>
   </animated.div>,
 ]
 
-export default function App({ titlePositionX,  parallaxPercentage, headerPositionY }) {
+export default function BrewsImages() {
 
   const {
     brewsSection
@@ -146,22 +131,9 @@ export default function App({ titlePositionX,  parallaxPercentage, headerPositio
     }
   }
   
-
-  // Methods
-
   return (
     <div className="img_text_overlap_container">
-      <div className="img_txt_overlap">
-          <RellaxWrapper speed={0.4} percentage={parallaxPercentage}>
-              <div style={{ bottom: headerPositionY }} className="custom_img_header_container">            
-                  <div className="custom_img_header_texts" style={titlePositionX}>
-                  <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
-                    <h1 className="special_h1" style={{ color: Colors.primary }}>Brews</h1>
-                  </ScrollAnimation>
-                  </div>
-              </div>
-          </RellaxWrapper>
-          <div className="carousel_container">
+          <div className="responsive_carousel_container">
             <ArrowGlow 
               click={() => {
                 brewsOnClick("next");
@@ -192,14 +164,13 @@ export default function App({ titlePositionX,  parallaxPercentage, headerPositio
                 <div className={"indicator_nodes_white " + nodesState[3]}></div>
               </div>
             </div>
-            <div className="simple-trans-main">
+            <div className="responsive_carousel">
               {transitions.map(({ item, props, key }) => {
                 const Page = pages[item]
                 return <Page key={key} style={props} />
               })}
             </div>
           </div>
-      </div>
 
       <div className="brews_text_container">
         <div className="inner_content">

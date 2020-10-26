@@ -29,6 +29,7 @@ const App = () => {
   const { 
     firstShortSection,
     mixesSection,
+    locationSection,
   } = Copy;
   
   //For Mixes carousel
@@ -255,7 +256,7 @@ const App = () => {
         <div className="mixes_section">
           <div style={{ paddingRight: isMobile ? "0" : "25%", justifyContent: isMobile ? "center" : "flex-end"  }} className="custom_img_header_container ipadpro_positioning">            
             <ScrollAnimation animateIn="fadeIn" afterAnimatedIn={showLateFade.bind(this, true)} animateOnce={true}>
-              <h1 className="special_h1" style={{ color: Colors.primary }}>Mixes</h1>
+              <h1 className="special_h1" style={{ color: Colors.primary }}>{mixesSection.sectionTitle}</h1>
             </ScrollAnimation>
           </div>
           <div className="mixes_elements">
@@ -369,9 +370,9 @@ const App = () => {
         </div>
         <div className="map_text">
               <MainLogo />
-              <p className="map_txt_statement">Everyday from 2pm - 9pm</p>
-              <p>111 Dundas St W, Toronto, Ontario, M5G1C4</p>
-              <p>437-917-9349</p>
+              <p className="map_txt_statement">{locationSection.texts[0]}</p>
+              <p>{locationSection.texts[1]}</p>
+              <p>{locationSection.texts[2]}</p>
         </div>
       </section>
 

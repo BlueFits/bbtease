@@ -1,4 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Quick Website Notes
+
+All Copy for the website is located under src/constants/WebCopy.js
+Social links can be found under src/components/Socials.js
 
 ## Available Scripts
 

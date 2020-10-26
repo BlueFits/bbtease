@@ -1,5 +1,3 @@
-import itemAImg from "../assets/images/drinkA.jpeg";
-
 export default {
     firstShortSection: {
         header: "To us, a human experience is any experience that involves at least one person.",
@@ -11,28 +9,8 @@ export default {
         for not only the customer, but also for the staff, and every other human involved in that community - from our suppliers, to our team, to our customers, we strive to make 
         sure that every part of that relationship chain is a wholesome experience.`
     },
-    firstMainSection: {
-        header: "Brews",
-        smallHeader: "A LOOK AT OUR",
-    },
-    firstSectionSelection: {
-        itemA: {
-            image: itemAImg,
-            title: "Milk Tea Brew",
-            description: "A short description of milk tea brew",
-        },
-        itemB: {
-            image: itemAImg,
-            title: "Milk Tea Brew",
-            description: "A short description of milk tea brew",
-        },
-        itemC: {
-            image: itemAImg,
-            title: "Milk Tea Brew",
-            description: "A short description of milk tea brew",
-        }
-    },
     brewsSection: {
+      sectionTitle: "Brews",
       header: [
         "Nitro Tea",
         "Pour Over Coffee",
@@ -80,60 +58,67 @@ export default {
       ],
     },
     mixesSection: {
-        header: [
-          "Nothin’ but the tea, Milk tea",
-          "MF Tea",
-          "Not Your Basic Iced Tea",
-          "bbtease Signature Smoothies",
-          "Fresh Tapioca & Toppings"
-        ],
-        description: [
-          
-          `
-            No artificial flavours. No milk powders. No fructose. No corn syrup. Just good ol’ high quality tea, milk, cream, 
-            and natural simple syrups made in house. Our goal is to showcase the best and most delicate nuances the tea has to offer, 
-            without resorting to fake flavours. 
-            <br/>
-            <br/>
-            To make a balanced, light, and refreshing milk tea that doesn’t leave a film in your mouth, 
-            and leaves out the harsh bitter aftertaste that comes with oversteeped tea. Perfectly balanced, as all things should be.
-          `,
-    
-          `
-            Our milk foam teas are rich, creamy, and packed with premium tea flavour. 
-            No artificial flavours, all natural, and deliciously decadent. 
-            With no cream added, yet just as rich, our MF Teas are a perfect alternative to our classic milk teas.
-          `,
+      sectionTitle: "Mixes",
+      header: [
+        "Nothin’ but the tea, Milk tea",
+        "MF Tea",
+        "Not Your Basic Iced Tea",
+        "bbtease Signature Smoothies",
+        "Fresh Tapioca & Toppings"
+      ],
+      description: [
+        
+        `
+          No artificial flavours. No milk powders. No fructose. No corn syrup. Just good ol’ high quality tea, milk, cream, 
+          and natural simple syrups made in house. Our goal is to showcase the best and most delicate nuances the tea has to offer, 
+          without resorting to fake flavours. 
+          <br/>
+          <br/>
+          To make a balanced, light, and refreshing milk tea that doesn’t leave a film in your mouth, 
+          and leaves out the harsh bitter aftertaste that comes with oversteeped tea. Perfectly balanced, as all things should be.
+        `,
+  
+        `
+          Our milk foam teas are rich, creamy, and packed with premium tea flavour. 
+          No artificial flavours, all natural, and deliciously decadent. 
+          With no cream added, yet just as rich, our MF Teas are a perfect alternative to our classic milk teas.
+        `,
 
-          `
-            Drawing on our team’s experience and passion for mixology, tea, coffee, and culinary arts, we are creating what we’ve always wanted iced tea to
-            be. 
-            <br/>
-            <br/>
-            Delicious, all natural, packed with flavour, honest, yet indulgent. Starting with meticulously brewed tea, with an emphasis
-            on bringing out the tea’s flavour without excessive bitterness, we aim for a balanced profile. Our next step is to add natural 
-            fruit syrups that are made in house, through cold press and reduction methods, as various herbs and garnishes to bring out the best the tea has to offer. 
-            We choose specific flavour profiles that promote a balanced flavour profile.
-          `,
-          `
-            Smoothies with honestly laid out ingredients. We’re not hiding any fluff or artificial flavourings. What you see is what you get.
-            <br/>
-            <br/> 
-            Each smoothie we craft is a blend of several whole fruits, our premium brewed tea, our house made simple syrup, and various other 
-            natural ingredients to balance out each flavour profile. Each smoothie is its own unique experience. Our goal was to create a 
-            wonderful flavour profile from start to finish with every sip.
-          `,
-          `
-            We could have gone with a hundred different varieties of toppings, but we believe that sometimes, less is more. By going with only 
-            a small handful of offerings, and focusing specifically on Tapioca, we are able to ensure a consistently fresh, and consistently delicious 
-            boba every time. 
-            <br/>
-            <br/>
-            Not too soft, not too hard, just chewy enough. Not too sweet, yet just sweet enough. Our goal is balance, as we believe that’s 
-            what makes these balls so damn good. Cooked in small batches every few hours throughout the day, our process ensures your tapioca is 
-            always fresh, and always delicious.
-          `,
-    
-        ],
-      }
+        `
+          Drawing on our team’s experience and passion for mixology, tea, coffee, and culinary arts, we are creating what we’ve always wanted iced tea to
+          be. 
+          <br/>
+          <br/>
+          Delicious, all natural, packed with flavour, honest, yet indulgent. Starting with meticulously brewed tea, with an emphasis
+          on bringing out the tea’s flavour without excessive bitterness, we aim for a balanced profile. Our next step is to add natural 
+          fruit syrups that are made in house, through cold press and reduction methods, as various herbs and garnishes to bring out the best the tea has to offer. 
+          We choose specific flavour profiles that promote a balanced flavour profile.
+        `,
+        `
+          Smoothies with honestly laid out ingredients. We’re not hiding any fluff or artificial flavourings. What you see is what you get.
+          <br/>
+          <br/> 
+          Each smoothie we craft is a blend of several whole fruits, our premium brewed tea, our house made simple syrup, and various other 
+          natural ingredients to balance out each flavour profile. Each smoothie is its own unique experience. Our goal was to create a 
+          wonderful flavour profile from start to finish with every sip.
+        `,
+        `
+          We could have gone with a hundred different varieties of toppings, but we believe that sometimes, less is more. By going with only 
+          a small handful of offerings, and focusing specifically on Tapioca, we are able to ensure a consistently fresh, and consistently delicious 
+          boba every time. 
+          <br/>
+          <br/>
+          Not too soft, not too hard, just chewy enough. Not too sweet, yet just sweet enough. Our goal is balance, as we believe that’s 
+          what makes these balls so damn good. Cooked in small batches every few hours throughout the day, our process ensures your tapioca is 
+          always fresh, and always delicious.
+        `,
+      ],
+    },
+    locationSection: {
+      texts: [
+        "Everyday from 2pm - 9pm",
+        "111 Dundas St W, Toronto, Ontario, M5G1C4",
+        "437-917-9349"
+      ],
+    },
 };

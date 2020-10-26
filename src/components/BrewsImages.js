@@ -154,7 +154,7 @@ export default function BrewsImages() {
     <div className="brews_section">
       <div style={{ paddingLeft: isMobile ? "0" : "13%" }} className="custom_img_header_container ipadpro_brews_header">            
         <ScrollAnimation animateIn="fadeIn" afterAnimatedIn={showFadedLateText.bind(this, true)} animateOnce={true}>
-          <h1 className="special_h1" style={{ color: Colors.primary }}>Brews</h1>
+          <h1 className="special_h1" style={{ color: Colors.primary }}>{brewsSection.sectionTitle}</h1>
         </ScrollAnimation>
       </div>
       <div className="img_text_overlap_container">

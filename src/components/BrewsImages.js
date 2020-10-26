@@ -53,6 +53,10 @@ export default function BrewsImages() {
   //Nodes
   const [nodesState, setNodesState] = useState(["indicator_nodes_filled_white", "", "", ""]);
 
+  //Arrows
+  const [mixesArrowLeftColor, setMixesArrowLeftColor] = useState(Colors.primary);
+  const [mixesArrowRightColor, setMixesArrowRightColor] = useState(Colors.primary);
+
 
   const transitions = useTransition(index, p => p, {
     from: { opacity: 0, transform: `translate3d(${transitionValues.from},0,0)` },
@@ -115,7 +119,6 @@ export default function BrewsImages() {
           //Node Logic
           let nodeTemp = Array(3).fill("");
           nodeTemp.unshift("indicator_nodes_filled_white");
-          console.log(nodeTemp);
           setNodesState(nodeTemp)
           //
           return animateText(0);
@@ -141,7 +144,6 @@ export default function BrewsImages() {
           //Node Logic
           let nodeTemp = Array(3).fill("");
           nodeTemp.push("indicator_nodes_filled_white");
-          console.log(nodeTemp);
           setNodesState(nodeTemp)
           //
           return animateText(maxLength);
@@ -159,36 +161,6 @@ export default function BrewsImages() {
       </div>
       <div className="img_text_overlap_container">
         <div className="responsive_carousel_container">
-          <ArrowGlow 
-            click={() => {
-              brewsOnClick("next");
-            }} 
-            glowStateHover={() => setArrowRightGlow("arrow_glow")} 
-            glowStateUnHover={() => setArrowRightGlow("")} 
-            arrowDirectionGlow={arrowRightGlow} 
-            direction="right"
-          >
-            <BsArrowRightShort style={{ zIndex: 2 }} size={32} color="#fff"/>
-          </ArrowGlow>
-          <ArrowGlow 
-            click={() => {
-              brewsOnClick("prev");
-            }} 
-            glowStateHover={() => setArrowLeftGlow("arrow_glow")} 
-            glowStateUnHover={() => setArrowLeftGlow("")} 
-            arrowDirectionGlow={arrowLeftGlow} 
-            direction="left"
-          >
-            <BsArrowLeftShort style={{ zIndex: 2 }} size={32} color="#fff"/>
-          </ArrowGlow>
-          <div className="inidicator_nodes_white_container">
-            <div className="indicator_white_extra_layer">
-              <div className={"indicator_nodes_white " + nodesState[0]}></div>
-              <div className={"indicator_nodes_white " + nodesState[1]}></div>
-              <div className={"indicator_nodes_white " + nodesState[2]}></div>
-              <div className={"indicator_nodes_white " + nodesState[3]}></div>
-            </div>
-          </div>
           <div className="responsive_carousel">
             {transitions.map(({ item, props, key }) => {
               const Page = pages[item]
@@ -205,6 +177,76 @@ export default function BrewsImages() {
               <div className={brewsLateFaded}>
                 <p className="small_text mobile_brews_description"dangerouslySetInnerHTML={{ __html: brewsSection.description[brewsCounter] }}></p>   
               </div>
+          </div>
+          <div className="carousel_ui_container">
+            <div 
+              style={{ borderRadius: "50px", height: 54, width: 54 }}                           
+              onMouseEnter={() => {
+                setTimeout(() => {
+                  if (!isMobile) {
+                    setMixesArrowLeftColor(Colors.background)
+                  }
+                }, 100);
+              }}
+              onMouseLeave={() => {
+                setTimeout(() => {
+                  if (!isMobile) {
+                    setMixesArrowLeftColor(Colors.primary)
+                  }
+                }, 100);
+              }}
+            >
+              <ArrowGlow 
+                click={() => {
+                  brewsOnClick("prev");
+                }} 
+                glowStateHover={() => setArrowLeftGlow("arrow_glow")} 
+                glowStateUnHover={() => setArrowLeftGlow("")} 
+                arrowDirectionGlow={arrowLeftGlow} 
+                direction="left"
+                showArrowBackground={false}
+              >
+                <BsArrowLeftShort style={{ zIndex: 2 }} size={24} color={mixesArrowLeftColor}/>
+              </ArrowGlow>
+            </div>
+            <div className="inidicator_nodes_white_container">
+              <div className="indicator_white_extra_layer">
+                <div className={"indicator_nodes_white " + nodesState[0]}></div>
+                <div className={"indicator_nodes_white " + nodesState[1]}></div>
+                <div className={"indicator_nodes_white " + nodesState[2]}></div>
+                <div className={"indicator_nodes_white " + nodesState[3]}></div>
+              </div>
+            </div>
+            <div 
+              style={{ borderRadius: "50px", height: 54, width: 54 }}                           
+              onMouseEnter={() => {
+                setTimeout(() => {
+                  if (!isMobile) {
+                    setMixesArrowRightColor(Colors.background)
+                  }
+                }, 100);
+              }}
+              onMouseLeave={() => {
+                setTimeout(() => {
+                  if (!isMobile) {
+                    setMixesArrowRightColor(Colors.primary)
+                  }
+                }, 100);
+              }}
+            >
+            <ArrowGlow 
+              click={() => {
+                brewsOnClick("next");
+              }} 
+              glowStateHover={() => setArrowRightGlow("arrow_glow")} 
+              glowStateUnHover={() => setArrowRightGlow("")} 
+              arrowDirectionGlow={arrowRightGlow} 
+              direction="right"
+              showArrowBackground={false}
+            >
+              <BsArrowRightShort style={{ zIndex: 2 }} size={24} color={mixesArrowRightColor}/>
+            </ArrowGlow>
+            </div>
           </div>
         </div>
       </div>

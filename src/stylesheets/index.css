@@ -480,8 +480,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 40px 0 10px 0;
 }
 
 .footer_elems {
@@ -502,9 +501,7 @@ footer {
 .footer_text {
   color: #494949;
   margin-top: 0;
-  /* margin-bottom: 10px; */
   font-size: 14px;
-  /* border: 1px solid red; */
 }
 
 .footer_line_break_arrow {

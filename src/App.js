@@ -407,8 +407,14 @@ const App = () => {
           <div className="footer_elems">
             <p className="footer_text">ALL RIGHTS RESERVED © 2020 | BUBBLETEASE</p>
           </div>
+          <div style={{ textAlign: "center" }} className="footer_elems">
+            <div>
+            <p className="footer_text">POWERED BY</p>
+            <a style={{ textDecoration: "none" }}href="https://www.hangrygroup.com/"><p style={{ color: "#ff6633" }}><em>HANGRY</em></p></a>
+            </div>
+          </div>         
           <div className="footer_elems designer_info_styles">
-            <a style={{ textDecoration: "none" }} href="https://christianr.herokuapp.com/" target="_blank" rel="noopener noreferrer" className="footer_text">DEVELOPMENT AND DESIGN BY CHRISTIAN ROJAS</a>
+            <a style={{ textDecoration: "none" }} href="https://christianr.onrender.com/" target="_blank" rel="noopener noreferrer" className="footer_text">DEVELOPMENT AND DESIGN BY CHRISTIAN ROJAS</a>
           </div>
         </div>
       </footer>

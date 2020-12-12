@@ -116,7 +116,7 @@ export default {
     },
     locationSection: {
       texts: [
-        "Everyday from 2pm - 9pm",
+        "Tuesday - Sunday from 2pm - 8pm",
         "111 Dundas St W, Toronto, Ontario, M5G1C4",
         "437-917-9349"
       ],
